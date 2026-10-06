@@ -37,3 +37,13 @@ This is a manual browser review and focused automated verification, not a comple
 +
 +Clean-machine Windows 10/11 install, update/uninstall and live-provider validation on additional machines remain follow-up tests. Passing automated and package checks do not certify those scenarios or complete accessibility coverage. The support mailbox is supplied by the owner; mail receipt and mailbox security are owner-managed.
 +
+
+## Peak 1.0.1 provider connection update
+
+Reviewed October 6, 2026. Enabling usage opens setup that checks installed Windows CLIs and existing logins; missing tools can use the official installer, while authentication remains in the provider's terminal/browser. Claude's bridge installs automatically and current limits still require a supported account and a first Claude Code response. Codex honors its configured login store.
+
+- Application source commit fdb09a7: zero build errors/warnings; all 154 tests passed with no skips. Actual installed Claude status-line fixture commands passed through PowerShell and Git Bash, including spaces and Unicode in their paths. A development-PC read-only Codex RPC check returned two usage windows.
+- Website: 26 files checked with zero errors/warnings/hints; all 10 tests passed. Public build generated seven pages; all 214 local references resolve. Local browser review confirmed the new connection steps and missing-command help.
+- Policy bundle 1.1 describes the new setup actions and matches the packaged app policies.
+- Versioned installer and portable ZIP are activated only after anonymous downloads pass the generated SHA-256 comparisons. Release metadata carries the corresponding versioned links.
+- Interactive provider installation/sign-in and a fresh Windows installer/update/uninstall walkthrough remain unverified on a clean machine. The automated fixtures and development-PC check do not establish compatibility on every machine.

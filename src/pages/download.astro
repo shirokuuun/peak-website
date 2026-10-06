@@ -119,18 +119,15 @@ const ready = isReleaseReady(release);
           </p>
           <h3>Codex usage</h3>
           <ol>
-            <li>Install a compatible Codex CLI or desktop app.</li>
-            <li>
-              In your user-level Codex configuration, choose the Windows
-              credential store:
-            </li>
+            <li>Turn on <strong>Codex usage</strong> in Peak’s Settings → Providers.</li>
+            <li>Peak checks for the Windows CLI and reuses your existing ChatGPT login.</li>
+            <li>If needed, choose <strong>Install &amp; connect</strong>, then <strong>Sign in &amp; connect</strong>. Complete the provider’s sign-in screen.</li>
+            <li>Save changes. Peak refreshes your usage automatically.</li>
           </ol>
-          <pre><code>cli_auth_credentials_store = "keyring"</code></pre>
           <p>
-            Run <code>codex login</code> yourself and finish signing in with
-            ChatGPT. Then enable Codex in Peak and refresh. Peak uses Codex’s
-            local app-server interface; it does not start model turns or copy
-            your credentials.
+            Peak respects Codex’s existing login configuration and reads its local app-server interface.
+            Provider credentials stay with Codex. API-key billing is separate from ChatGPT subscription limits.
+            <a href="https://learn.chatgpt.com/docs/codex/cli">Official Codex setup</a>.
           </p>
           <h3>Codex task activity</h3>
           <p>
@@ -147,17 +144,29 @@ const ready = isReleaseReady(release);
             approvals. Reported states can become stale; respond in Codex.
           </p>
           <h3>Claude usage</h3>
+          <ol>
+            <li>Turn on <strong>Claude usage</strong>. Peak installs its usage bridge automatically.</li>
+            <li>Choose <strong>Install &amp; connect</strong> if Claude Code is missing, then <strong>Open Claude Code</strong>.</li>
+            <li>Sign in with Claude Pro or Max. Send a prompt and wait for its first response. Restart existing Claude Code sessions to load the bridge.</li>
+            <li>Save changes. Peak receives usage as Claude Code reports it.</li>
+          </ol>
           <p>
-            Choose <strong>Connect Claude</strong>, enable Claude, and save.
-            Restart Claude Code and use it once. A compatible CLI, supported
-            subscription, and reported rate-limit fields are required. Peak
-            preserves the output of an existing status-line command and keeps a
-            protected restoration backup.
+            Use the Windows Claude Code CLI. The Claude chat website or desktop app alone,
+            and API-key accounts, do not supply these personal subscription readings to Peak.
+            Peak preserves an existing status-line command’s output and a protected restoration backup.
+            <a href="https://code.claude.com/docs/en/setup">Official Claude Code setup</a>.
           </p>
           <p>
-            Claude readings update during CLI activity and can become stale.
-            Reconnect after changing accounts. Claude task or approval
-            monitoring is not included.
+            Installing and signing in take effect immediately; canceling Peak’s other preferences does not undo them.
+            Readings can become stale between CLI activity. Reconnect after changing accounts.
+            Claude task or approval monitoring is not included.
+          </p>
+          <h3>If a command is not recognized</h3>
+          <p>
+            Reopen PowerShell after installing, then check <code>codex --version</code> or <code>claude --version</code>.
+            Restart Peak if it was open during installation. Use connection setup above to install a missing CLI.
+            If Claude stays waiting, receive a response in a new Claude Code session and check that a project-level
+            status line is not replacing Peak’s user-level bridge.
           </p>
         </section>
         <section id="windows-warnings" class="content-block">

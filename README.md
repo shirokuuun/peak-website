@@ -29,7 +29,7 @@ npm run preview
 
 Production: https://peakforwindows.vercel.app. Import `shirokuuun/peak-website`, root `.`, Astro, Node 24.x, install `npm ci`, build `npm run build:public`, output `dist`. Root vercel.json supplies this configuration. Website main pushes deploy to production.
 
-The current release is Peak 1.0.0 freeware. Public versioned installer and portable ZIP downloads use the binary-only `shirokuuun/Peak-releases` repository. The application source repository stays private. The first release is unsigned; setup pages explain Windows warnings and show SHA-256 values.
+The current release is Peak 1.0.1 freeware. Public versioned installer and portable ZIP downloads use the binary-only `shirokuuun/Peak-releases` repository. The application source repository stays private. The first release is unsigned; setup pages explain Windows warnings and show SHA-256 values.
 
 Publisher neorangel and support peakforwindows.support@gmail.com are recorded in `src/data/publication.json`. Policy version 1.0 in `src/content/policies` matches the application's embedded/package documents. Release metadata in `src/data/release.json` is generated from the package artifacts, and enabled only after both public downloads and hashes are verified. No runtime GitHub API or account is required.
 

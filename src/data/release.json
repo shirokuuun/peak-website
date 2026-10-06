@@ -1,19 +1,19 @@
 {
   "available": true,
   "verified": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishedAt": "2026-10-06",
   "architecture": "x64",
   "requirements": "Windows 10 version 2004 or later, or Windows 11 · x64",
   "signingStatus": "unsigned",
   "repositoryUrl": "https://github.com/shirokuuun/Peak-releases",
-  "releaseNotesUrl": "https://github.com/shirokuuun/Peak-releases/releases/tag/v1.0.0",
+  "releaseNotesUrl": "https://github.com/shirokuuun/Peak-releases/releases/tag/v1.0.1",
   "installer": {
-    "sha256": "043dfd21b557c77cd80a3762aa0cb0b6d3642b3335e900ef9d396c4353c6159a",
-    "url": "https://github.com/shirokuuun/Peak-releases/releases/download/v1.0.0/Peak-1.0.0-Windows-x64-Setup.exe"
+    "sha256": "0e2ac46fdcf5989afcc58a12cfd349ca37e2131e2111a9a7823954859c055f82",
+    "url": "https://github.com/shirokuuun/Peak-releases/releases/download/v1.0.1/Peak-1.0.1-Windows-x64-Setup.exe"
   },
   "portable": {
-    "sha256": "8a4dd3fae89e4dd84a755d4ff05ae5b5798616e562ae35deeec48b4a87e7d417",
-    "url": "https://github.com/shirokuuun/Peak-releases/releases/download/v1.0.0/Peak-1.0.0-Windows-x64-Portable.zip"
+    "sha256": "e6c8de894d8897cb11008c395a6dfb890d823231c94b320997147a3a2cea12d8",
+    "url": "https://github.com/shirokuuun/Peak-releases/releases/download/v1.0.1/Peak-1.0.1-Windows-x64-Portable.zip"
   }
 }
