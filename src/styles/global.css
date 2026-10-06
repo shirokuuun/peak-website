@@ -1865,6 +1865,7 @@ h3 {
   line-height: 1.25;
 }
 .aside-card p {
+  overflow-wrap: anywhere;
   font-size: 11px;
   line-height: 1.8;
   color: var(--muted);

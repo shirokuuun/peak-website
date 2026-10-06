@@ -1,9 +1,9 @@
 {
-  "publisherName": "",
-  "supportEmail": "",
-  "websiteUrl": "",
-  "policiesReviewed": false,
-  "appPoliciesMatch": false,
-  "policyVersion": "1.0-draft",
+  "publisherName": "neorangel",
+  "supportEmail": "peakforwindows.support@gmail.com",
+  "websiteUrl": "https://peakforwindows.vercel.app",
+  "policiesReviewed": true,
+  "appPoliciesMatch": true,
+  "policyVersion": "1.0",
   "policyDate": "October 6, 2026"
 }

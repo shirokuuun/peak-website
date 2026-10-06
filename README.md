@@ -25,31 +25,17 @@ npm run preview
 
 `npm run build` produces a reviewable preview in `dist/`. Previews emit `noindex, nofollow` and a disallowing robots file. All content remains readable without JavaScript; the interactive playground needs JavaScript. No browser settings or provider accounts are accessed.
 
-## Vercel
+## Vercel and public releases
 
-Import `shirokuuun/peak-website` and use **Root Directory: `.` (the project root)**. Framework preset: **Astro**. Install command: `npm ci`. Build command: `npm run build`. Output directory: `dist`. Node version: 24.x. The root `vercel.json` supplies headers and build settings.
+Production: https://peakforwindows.vercel.app. Import `shirokuuun/peak-website`, root `.`, Astro, Node 24.x, install `npm ci`, build `npm run build:public`, output `dist`. Root vercel.json supplies this configuration. Website main pushes deploy to production.
 
-For the first deployment, leave Environment Variables empty and click **Deploy**. Both Vercel Preview and Production deployments can host the coming-soon website. This mode keeps downloads unavailable, labels policy drafts, and emits `noindex, nofollow`. A Vercel Production deployment does not itself announce or enable the app release.
+The current release is Peak 1.0.0 freeware. Public versioned installer and portable ZIP downloads use the binary-only `shirokuuun/Peak-releases` repository. The application source repository stays private. The first release is unsigned; setup pages explain Windows warnings and show SHA-256 values.
 
-The full launch is explicitly enabled with `PEAK_PUBLIC_BUILD=1` or `npm run build:public`. These still reject builds until the release configuration below is complete. Set the flag to 1 in Vercel only when the full release is ready.
+Publisher neorangel and support peakforwindows.support@gmail.com are recorded in `src/data/publication.json`. Policy version 1.0 in `src/content/policies` matches the application's embedded/package documents. Release metadata in `src/data/release.json` is generated from the package artifacts, and enabled only after both public downloads and hashes are verified. No runtime GitHub API or account is required.
 
-The plan assumes a non-monetized personal project. Reassess the appropriate Vercel plan if donations, sponsorships, ads, or paid services are introduced.
+For future releases, use the private app repository's `scripts/package-release.ps1` and `scripts/verify-public-downloads.ps1 -WebsiteRoot D:/Languages/codex/peak_website`, then commit the generated manifest here. `npm run build:public` validates version, download URLs, hashes, contacts and synchronized policies before generating indexable pages and a sitemap. `npm run build` remains a local preview with noindex. Never add signing keys, API credentials or diagnostics.
 
-Once ready for launch, use this repository’s `main` branch for production. Attach a custom domain in Vercel’s Domains settings, apply the DNS records Vercel supplies, and set the same HTTPS origin in publishing configuration. Website deployment uses this independent repository and does not change the application repository’s visibility.
-
-## Publishing configuration
-
-Edit `src/data/publication.json` with the real publisher name, verified dedicated Gmail support address, final HTTPS website URL, policy version, and date. Mark `policiesReviewed` and `appPoliciesMatch` true only after owner review and synchronization with the freeware app. An optional `PEAK_SITE_URL` environment variable supplies a canonical origin during preview.
-
-Edit `src/data/release.json` with the verified freeware version, publication date, actual signing status, release notes URL, and versioned installer/portable URLs and SHA-256 hashes. The default distribution-only repository is `shirokuuun/Peak-releases`; it is a planned destination and has not been created by this task. Set `available` and `verified` true only after the packages exist and have been checked. Keep this manifest as the release information source for future packaging integration. The website does not call GitHub’s API at runtime.
-
-```powershell
-npm run build:public
-```
-
-This checks assets, contacts, reviewed policies, and app policy agreement before generating public pages. The current configuration deliberately fails this command. Never add signing keys, credentials, observations, or private diagnostic files.
-
-Website policy drafts live in `src/content/policies/`. The app currently contains a separate commercial implementation; freeware conversion and app policy synchronization are separate work. Do not advertise a current paid/test build as the verified free download.
+For a custom domain, add it in Vercel Domains, apply its DNS records, and update the same HTTPS origin in both app and website publishing metadata. Reassess hosting requirements if the project later introduces paid services or advertising.
 
 ## Media
 

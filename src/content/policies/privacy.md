@@ -1,6 +1,10 @@
+# Peak Privacy
+
+Policy version 1.0 · October 6, 2026
+
 ## What this notice covers
 
-This draft describes the upcoming freeware version of Peak, this website, its planned GitHub download distribution, and support correspondence. The publisher identity and dedicated support contact will be supplied before launch. Peak is an independent Windows utility.
+This notice covers Peak, published by **neorangel**, this website, GitHub download distribution, and support correspondence. Contact: **peakforwindows.support@gmail.com**. Peak is an independent Windows utility.
 
 ## Provider access is your choice
 
@@ -32,7 +36,7 @@ Preferences, the latest usage cache, alert checkpoints, and restoration informat
 
 Use the app’s privacy controls to clear owned observations, disconnect integrations, or request complete local-data deletion. Cleanup preserves unrelated provider settings. Claude restoration is attempted only when Peak’s installed status-line entry still matches; backups are retained when restoration cannot safely complete. Restart existing CLI sessions to unload integrations already loaded there.
 
-An old paid-license file is ignored by the planned freeware release. It is removed only through explicit complete-data deletion. The freeware migration makes no merchant requests.
+An old paid-license file is ignored by the freeware release. It is removed only through explicit complete-data deletion. The freeware migration makes no merchant requests.
 
 ## The website and downloads
 
@@ -44,12 +48,12 @@ See [Vercel’s privacy policy](https://vercel.com/legal/privacy-policy) and [Gi
 
 ## Support emails
 
-Support will use a dedicated Gmail account. When you email the publisher, your address, message, and any attachments you choose to send are processed to handle installation help, bugs, privacy requests, or security reports. No email is sent automatically by Peak or this website.
+Support uses **peakforwindows.support@gmail.com**. When you email the publisher, your address, message, and any attachments you choose to send are processed to handle installation help, bugs, privacy requests, or security reports. No email is sent automatically by Peak or this website.
 
-The proposed default is to delete resolved correspondence after **90 days**, except records needed for an ongoing dispute or legal obligation. Unresolved issues remain while being handled. Applicable privacy-request deadlines take precedence. Support correspondence is not used for marketing without separate consent.
+The default is to delete resolved correspondence after **90 days**, except records needed for an ongoing dispute or legal obligation. Unresolved issues remain while being handled. Applicable privacy-request deadlines take precedence. Support correspondence is not used for marketing without separate consent.
 
 Send a sanitized description instead of complete transcripts, credential files, or private work. Google processes Gmail under its own [privacy policy](https://policies.google.com/privacy).
 
 ## Your requests
 
-Use the verified support contact, once published, to request access, correction, or deletion of publisher-held information or to raise privacy concerns. Include only enough information to identify the correspondence involved. Applicable legal rights remain available.
+Email **peakforwindows.support@gmail.com** to request access, correction, or deletion of publisher-held information or to raise privacy concerns. Include only enough information to identify the correspondence involved. Applicable legal rights remain available.

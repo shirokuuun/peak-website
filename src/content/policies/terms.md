@@ -1,6 +1,10 @@
+# Peak Terms
+
+Policy version 1.0 · October 6, 2026
+
 ## Free personal and workplace use
 
-The upcoming public version of Peak is freeware. It permits personal and workplace use on unlimited devices, without payment to Peak, a Peak account, activation, or expiry. Provider subscriptions and credits are not included.
+Peak is freeware, published by **neorangel**. It permits personal and workplace use on unlimited devices, without payment to Peak, a Peak account, activation, or expiry. Provider subscriptions and credits are not included.
 
 The publisher retains ownership of Peak’s source code. Permission to use the application does not grant an open-source license or permission to modify and redistribute the source. Any separate source agreement governs the code it covers.
 
@@ -32,7 +36,7 @@ The first release may be unsigned. Windows can warn about or block unsigned apps
 
 Use Peak with appropriate care for your environment. Keep provider credentials private, review integration consent, and check the provider’s own display when a reading or task state matters to your decision.
 
-Nothing in these draft terms excludes rights or liability that applicable law does not permit the publisher to exclude. Contact the publisher through the published support contact to seek a practical resolution of a concern.
+Nothing in these terms excludes rights or liability that applicable law does not permit the publisher to exclude. Contact the publisher through the published support contact to seek a practical resolution of a concern.
 
 ## Independence
 

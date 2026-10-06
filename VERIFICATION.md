@@ -27,6 +27,13 @@ Reviewed in the Codex browser using the built static site:
 
 This is a manual browser review and focused automated verification, not a complete screen-reader or cross-browser certification. Native screenshots use sample data; the browser playground has no provider connection.
 
-## Launch configuration still needed
-
-The coming-soon site can be hosted from `shirokuuun/peak-website` in either Vercel environment, using the repository root (`.`), without environment variables. Hosting alone does not enable the full release mode. That mode requires `PEAK_PUBLIC_BUILD=1` or `--public`, plus the real publisher, verified support mailbox, final domain, reviewed policies matching the freeware app, and verified release packages. The current desktop application is not converted to freeware by this website work.
+## Public freeware release — October 6, 2026
++
++Peak 1.0.0 is published in the public binary-only Peak-releases repository. Publisher: neorangel. Support: peakforwindows.support@gmail.com. App source visibility remains private. The app's Release build passes 135 automated tests and contains no paid activation components. The complete package audit verifies 684 files, eight dependency license/notice files, identical app/site policies and matching portable bytes.
++
++Both installer and portable ZIP were downloaded anonymously and their SHA-256 values matched the generated release manifest. The website uses that verified manifest, explains the unsigned status, and displays versioned direct download links. Policy version 1.0 is shared by the website, app resources and packages.
++
++Current website checks: 26 files, zero type-check errors/warnings/hints; ten focused tests pass; public static build passes and all generated local references resolve. Public pages have one main heading, no duplicate IDs or external scripts, canonical URLs, an allowing robots.txt and a sitemap. The preview mode remains intentionally noindex when explicitly used for local review. Vercel now uses the validated public build command.
++
++Clean-machine Windows 10/11 install, update/uninstall and live-provider validation on additional machines remain follow-up tests. Passing automated and package checks do not certify those scenarios or complete accessibility coverage. The support mailbox is supplied by the owner; mail receipt and mailbox security are owner-managed.
++

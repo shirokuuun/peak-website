@@ -1,0 +1,13 @@
+---
+interface Props {
+  render: () => Promise<string>;
+}
+// The shared file includes a title and version for the desktop/package reader.
+// PolicyLayout already displays both, so retain only the policy body here.
+const html = (await Astro.props.render()).replace(
+  /^<h1\b[^>]*>Peak [\s\S]*?<\/h1>\s*<p>Policy version [\s\S]*?<\/p>\s*/,
+  '',
+);
+---
+
+<Fragment set:html={html} />

@@ -1,3 +1,7 @@
+# Peak Notices
+
+Policy version 1.0 · October 6, 2026
+
 ## Independent product
 
 Peak is an independent Windows utility. OpenAI, Codex, Claude, Anthropic, Microsoft, and Windows names identify their respective products and services. Peak does not claim affiliation or endorsement. Provider identification in this website uses plain text and abbreviations.
@@ -6,7 +10,7 @@ Peak is an independent Windows utility. OpenAI, Codex, Claude, Anthropic, Micros
 
 Self-contained Peak builds include Microsoft .NET and Windows Desktop runtime components. The application also uses System.Security.Cryptography.ProtectedData, CommunityToolkit.WinUI.Notifications, and transitive Windows SDK / WinRT components.
 
-The verified release package must include the applicable full license texts and generated dependency notices. This page is an overview, not a substitute for the package’s complete notices. Third-party licenses govern their components; Peak’s freeware terms do not replace them.
+Official release packages include the applicable full license texts and generated dependency notices. This page is an overview, not a substitute for the package’s complete notices. Third-party licenses govern their components; Peak’s freeware terms do not replace them.
 
 - [Microsoft .NET runtime](https://github.com/dotnet/runtime)
 - [Windows Community Toolkit](https://github.com/CommunityToolkit/WindowsCommunityToolkit)

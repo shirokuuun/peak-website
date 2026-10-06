@@ -1,11 +1,12 @@
 ---
 import PolicyLayout from '../layouts/PolicyLayout.astro';
-import Notices from '../content/policies/notices.md';
+import { compiledContent } from '../content/policies/notices.md';
+import PolicyBody from '../components/PolicyBody.astro';
 ---
 
 <PolicyLayout
   title="Third-party notices"
-  description="Peak’s independence, desktop dependencies, website components, self-hosted fonts, and supplied film assets."
+  description="Peakâ€™s independence, desktop dependencies, website components, self-hosted fonts, and supplied film assets."
 >
-  <Notices />
+  <PolicyBody render={compiledContent} />
 </PolicyLayout>

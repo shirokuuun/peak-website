@@ -1,11 +1,12 @@
 ---
 import PolicyLayout from '../layouts/PolicyLayout.astro';
-import Privacy from '../content/policies/privacy.md';
+import { compiledContent } from '../content/policies/privacy.md';
+import PolicyBody from '../components/PolicyBody.astro';
 ---
 
 <PolicyLayout
   title="Privacy"
-  description="Local observations, provider access, website hosting, downloads, and support correspondence — explained separately."
+  description="Local observations, provider access, website hosting, downloads, and support correspondence â€” explained separately."
 >
-  <Privacy />
+  <PolicyBody render={compiledContent} />
 </PolicyLayout>

@@ -1,11 +1,12 @@
 ---
 import PolicyLayout from '../layouts/PolicyLayout.astro';
-import Terms from '../content/policies/terms.md';
+import { compiledContent } from '../content/policies/terms.md';
+import PolicyBody from '../components/PolicyBody.astro';
 ---
 
 <PolicyLayout
   title="Freeware terms"
   description="Free personal and workplace use, unlimited devices, retained source ownership, and complete unchanged package redistribution."
 >
-  <Terms />
+  <PolicyBody render={compiledContent} />
 </PolicyLayout>
