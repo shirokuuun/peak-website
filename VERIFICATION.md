@@ -11,6 +11,7 @@ The project was subsequently moved to `D:\Languages\codex\peak_website` as a sta
 - `npm run build`: seven static HTML pages and `robots.txt` generated successfully.
 - Generated-page audit: 214 local link/media references resolve, including fragment targets. Each page has one main heading and no duplicate IDs or external script URLs. Preview pages carry `noindex, nofollow`.
 - `npm run build:public`: correctly rejects the incomplete launch configuration. No installer, ZIP, checksum, publisher identity, or support address was invented.
+- Vercel Production simulation (`VERCEL_ENV=production`, `PEAK_PUBLIC_BUILD=0`): build and the 214-reference audit pass; HTML remains `noindex, nofollow`, `robots.txt` disallows indexing, and the explicit full-release build still rejects the incomplete configuration.
 - The supplied promo and the committed copy have the same SHA-256: `1B47F1ADB9AA4E775DD2B6D2EC1A74B2E21F817DB485E9172925352C34483422`.
 
 ## Browser review
@@ -28,4 +29,4 @@ This is a manual browser review and focused automated verification, not a comple
 
 ## Launch configuration still needed
 
-The site is ready for a Vercel preview from `shirokuuun/peak-website`, using the repository root (`.`) as the root directory. Public launch requires the real publisher, verified support mailbox, final domain, reviewed policies matching the freeware app, and verified release packages. The current desktop application is not converted to freeware by this website work.
+The coming-soon site can be hosted from `shirokuuun/peak-website` in either Vercel environment, using the repository root (`.`), without environment variables. Hosting alone does not enable the full release mode. That mode requires `PEAK_PUBLIC_BUILD=1` or `--public`, plus the real publisher, verified support mailbox, final domain, reviewed policies matching the freeware app, and verified release packages. The current desktop application is not converted to freeware by this website work.

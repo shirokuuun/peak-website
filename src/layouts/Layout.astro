@@ -13,9 +13,7 @@ const {
   title = 'Peak — Keep your AI work in view.',
   description = 'A free Windows island for Codex and Claude usage, with Codex task activity. Explore Peak with an interactive demo.',
 } = Astro.props;
-const publicBuild =
-  import.meta.env.PEAK_PUBLIC_BUILD === '1' ||
-  import.meta.env.VERCEL_ENV === 'production';
+const publicBuild = import.meta.env.PEAK_PUBLIC_BUILD === '1';
 const canonical = Astro.site
   ? new URL(Astro.url.pathname, Astro.site).href
   : undefined;

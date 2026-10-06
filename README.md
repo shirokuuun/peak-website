@@ -29,7 +29,9 @@ npm run preview
 
 Import `shirokuuun/peak-website` and use **Root Directory: `.` (the project root)**. Framework preset: **Astro**. Install command: `npm ci`. Build command: `npm run build`. Output directory: `dist`. Node version: 24.x. The root `vercel.json` supplies headers and build settings.
 
-Use Vercel’s **Preview** environment for review. Production deployments are intentionally rejected until the release configuration below is complete. Vercel’s production environment triggers the same checks as `npm run build:public`.
+For the first deployment, leave Environment Variables empty and click **Deploy**. Both Vercel Preview and Production deployments can host the coming-soon website. This mode keeps downloads unavailable, labels policy drafts, and emits `noindex, nofollow`. A Vercel Production deployment does not itself announce or enable the app release.
+
+The full launch is explicitly enabled with `PEAK_PUBLIC_BUILD=1` or `npm run build:public`. These still reject builds until the release configuration below is complete. Set the flag to 1 in Vercel only when the full release is ready.
 
 The plan assumes a non-monetized personal project. Reassess the appropriate Vercel plan if donations, sponsorships, ads, or paid services are introduced.
 

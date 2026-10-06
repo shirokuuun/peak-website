@@ -1,8 +1,6 @@
 import type { APIRoute } from 'astro';
 export const GET: APIRoute = ({ site }) => {
-  const publicBuild =
-    import.meta.env.PEAK_PUBLIC_BUILD === '1' ||
-    import.meta.env.VERCEL_ENV === 'production';
+  const publicBuild = import.meta.env.PEAK_PUBLIC_BUILD === '1';
   return new Response(
     publicBuild
       ? `User-agent: *\nAllow: /\n${site ? `Sitemap: ${new URL('sitemap-index.xml', site)}\n` : ''}`

@@ -12,8 +12,7 @@ const release = JSON.parse(
 );
 const publicBuild =
   process.argv.includes('--public') ||
-  process.env.PEAK_PUBLIC_BUILD === '1' ||
-  process.env.VERCEL_ENV === 'production';
+  process.env.PEAK_PUBLIC_BUILD === '1';
 if (publicBuild) {
   const errors = publicBuildErrors(publication, release);
   if (errors.length) {
