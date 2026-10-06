@@ -1,0 +1,184 @@
+---
+import Icon from './Icon.astro';
+const steps = [
+  {
+    id: 'limits',
+    number: '01',
+    label: 'THE BIG PICTURE',
+    title: 'Know what’s left.',
+    description:
+      'Your Codex and Claude subscription limits, together. See what remains in your 5-hour and weekly windows, with reported reset times.',
+    note: 'Remaining usage. No guesswork from token totals.',
+    image: 'limits-dark.png',
+    alt: 'Native Peak limits screen showing sample 5-hour and weekly remaining usage.',
+  },
+  {
+    id: 'activity',
+    number: '02',
+    label: 'THE WORK IN MOTION',
+    title: 'Know what’s moving.',
+    description:
+      'Confirmed Codex activity gives the island a little more room. Keep the task, project, and elapsed time in view while you stay with your work.',
+    note: 'An activity line, not a completion percentage.',
+    image: 'tasks-dark.png',
+    alt: 'Native Peak task list showing sample Codex tasks and project activity.',
+  },
+  {
+    id: 'attention',
+    number: '03',
+    label: 'THE MOMENT YOU MATTER',
+    title: 'Know when it’s your turn.',
+    description:
+      'A reported approval request or question brings the task into view. Open Codex to review it, respond, and let the work continue.',
+    note: 'Peak observes. You answer in Codex.',
+    image: 'attention-dark.png',
+    alt: 'Native Peak island showing a sample review request.',
+  },
+];
+---
+
+<section
+  id="story"
+  class="story-section wrap section-space"
+  aria-labelledby="story-title"
+>
+  <div class="section-intro">
+    <span class="eyebrow">BUILT AROUND YOUR WORK</span>
+    <h2 id="story-title">
+      EVERY LIMIT.
+      <br />
+      ONE VIEW.
+    </h2>
+    <p>
+      Usage, activity, and the moments that need you.
+      <br class="desktop-break" /> A focused view of your AI workflow.
+    </p>
+  </div>
+  <div class="story-grid">
+    <div class="story-copy">
+      {steps.map((step) => (
+        <article
+          class="story-step"
+          id={`story-${step.id}`}
+          data-story-step={step.id}
+          data-story-image={step.image}
+          data-story-alt={step.alt}
+        >
+          <div class="story-step-label">
+            <span>{step.number}</span>
+            <span class="eyebrow">{step.label}</span>
+          </div>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+          <div class="story-note">
+            <Icon name="check" size={16} />
+            {step.note}
+          </div>
+          <img
+            class="story-mobile-shot"
+            src={`/screens/${step.image}`}
+            alt={step.alt}
+            loading="lazy"
+            width="1800"
+            height={step.id === 'attention' ? '234' : '1668'}
+          />
+        </article>
+      ))}
+    </div>
+    <figure class="story-visual">
+      <div class="story-visual-heading">
+        <span>PEAK / UP CLOSE</span>
+        <span class="sample-tag">NATIVE APP · DEMO DATA</span>
+      </div>
+      <div class="native-shot-stage">
+        <div class="native-stage-grid" />
+        <img
+          data-story-shot
+          src="/screens/limits-dark.png"
+          alt={steps[0].alt}
+          width="1800"
+          height="1668"
+          loading="lazy"
+        />
+      </div>
+      <figcaption>
+        <div class="story-selectors" aria-label="Choose a walkthrough screen">
+          {steps.map((step, i) => (
+            <button
+              data-story-select={step.id}
+              type="button"
+              aria-pressed={i === 0}
+            >
+              {step.number}
+              <span>
+                {step.id === 'limits'
+                  ? 'Limits'
+                  : step.id === 'activity'
+                    ? 'Activity'
+                    : 'Attention'}
+              </span>
+            </button>
+          ))}
+        </div>
+        <p>Actual Windows app controls, captured with sample data.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+<script>
+  const steps = [
+    ...document.querySelectorAll<HTMLElement>('[data-story-step]'),
+  ];
+  const image = document.querySelector<HTMLImageElement>('[data-story-shot]');
+  function activate(step: HTMLElement) {
+    if (
+      image &&
+      step.dataset.storyImage &&
+      image.getAttribute('src') !== `/screens/${step.dataset.storyImage}`
+    ) {
+      image.src = `/screens/${step.dataset.storyImage}`;
+      image.alt = step.dataset.storyAlt || 'Peak demo screen';
+    }
+    steps.forEach((item) =>
+      item.classList.toggle('story-active', item === step),
+    );
+    document
+      .querySelectorAll<HTMLButtonElement>('[data-story-select]')
+      .forEach((button) =>
+        button.setAttribute(
+          'aria-pressed',
+          String(button.dataset.storySelect === step.dataset.storyStep),
+        ),
+      );
+  }
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) activate(visible[0].target as HTMLElement);
+      },
+      { rootMargin: '-15% 0px -25% 0px', threshold: [0, 0.2, 0.5, 0.8] },
+    );
+    steps.forEach((step) => observer.observe(step));
+  }
+  document
+    .querySelectorAll<HTMLButtonElement>('[data-story-select]')
+    .forEach((button) =>
+      button.addEventListener('click', () => {
+        const step = steps.find(
+          (item) => item.dataset.storyStep === button.dataset.storySelect,
+        );
+        if (step) {
+          step.scrollIntoView({
+            block: 'center',
+            behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+              ? 'instant'
+              : 'smooth',
+          });
+          activate(step);
+        }
+      }),
+    );
+</script>

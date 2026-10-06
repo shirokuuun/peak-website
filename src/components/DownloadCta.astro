@@ -1,0 +1,32 @@
+---
+import Icon from './Icon.astro';
+import release from '../data/release.json';
+import { isReleaseReady } from '../lib/release.mjs';
+const ready = isReleaseReady(release);
+---
+
+<section class="download-cta wrap" aria-labelledby="download-cta-title">
+  <div class="cta-brand-mark" aria-hidden="true">
+    ↗
+  </div>
+  <span class="eyebrow">A LITTLE ISLAND. A CLEARER PICTURE.</span>
+  <h2 id="download-cta-title">
+    Make room for
+    <br />
+    <span class="heading-emphasis">your work.</span>
+  </h2>
+  <p>
+    Free for personal and workplace use.
+    <br />
+    No Peak account. No activation. Your own provider subscriptions still apply.
+  </p>
+  <a class="button button-primary" href="/download/">
+    {ready ? 'Download Peak for Windows' : 'Get Peak for Windows'}
+    <Icon name="download" size={18} />
+  </a>
+  <span class="cta-note">
+    {ready
+      ? `v${release.version} · Windows x64`
+      : 'Free release coming soon · Windows x64'}
+  </span>
+</section>

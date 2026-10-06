@@ -1,0 +1,88 @@
+---
+import Icon from './Icon.astro';
+const active = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Peak home">
+      <img src="/peak-icon.png" width="34" height="34" alt="" />
+      <span>PEAK</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="/#story">Overview</a>
+      <a href="/#playground">Playground</a>
+      <a href="/#film">Film</a>
+      <a
+        href="/support/"
+        aria-current={active === '/support/' ? 'page' : undefined}
+      >
+        Support
+      </a>
+    </nav>
+    <a class="button button-small header-download" href="/download/">
+      Download <Icon name="download" size={15} />
+    </a>
+    <button
+      class="menu-button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      data-menu-toggle
+    >
+      <Icon name="menu" />
+    </button>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+    <a href="/#story">Overview</a>
+    <a href="/#playground">Playground</a>
+    <a href="/#film">Film</a>
+    <a href="/support/">Support</a>
+    <a href="/download/">Get Peak for Windows</a>
+  </nav>
+  <noscript>
+    <nav class="fallback-nav" aria-label="Navigation">
+      <a href="/#story">Overview</a>
+      <a href="/#playground">Playground</a>
+      <a href="/#film">Film</a>
+      <a href="/support/">Support</a>
+    </nav>
+  </noscript>
+</header>
+<script>
+  const toggle =
+    document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const nav = document.querySelector<HTMLElement>('#mobile-nav');
+  const close = () => {
+    if (nav && toggle) {
+      nav.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+    }
+  };
+  toggle?.addEventListener('click', () => {
+    if (!nav) return;
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    nav.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute(
+      'aria-label',
+      open ? 'Close navigation' : 'Open navigation',
+    );
+  });
+  nav
+    ?.querySelectorAll('a')
+    .forEach((link) => link.addEventListener('click', close));
+  document.addEventListener('keydown', (event) => {
+    if (
+      event.key === 'Escape' &&
+      toggle?.getAttribute('aria-expanded') === 'true'
+    ) {
+      close();
+      toggle.focus();
+    }
+  });
+  matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
+    if (event.matches) close();
+  });
+</script>

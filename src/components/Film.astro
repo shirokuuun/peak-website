@@ -1,0 +1,112 @@
+---
+import Icon from './Icon.astro';
+const chapters = [
+  { at: 0, time: '00:00', label: 'Stay in flow' },
+  { at: 4, time: '00:04', label: 'Your limits' },
+  { at: 10, time: '00:10', label: 'Your work' },
+  { at: 16, time: '00:16', label: 'Your turn' },
+  { at: 21, time: '00:21', label: 'Your style' },
+  { at: 27, time: '00:27', label: 'Your space' },
+];
+---
+
+<section
+  id="film"
+  class="film-section wrap section-space"
+  aria-labelledby="film-title"
+>
+  <div class="film-heading">
+    <div>
+      <span class="eyebrow">THE PRODUCT FILM</span>
+      <h2 id="film-title">
+        36 SECONDS.
+        <br />
+        THE FULL PICTURE.
+      </h2>
+    </div>
+    <div class="film-side-note">
+      <span class="film-duration">00:36</span>
+      <p>
+        Peak, in motion.
+        <br />A closer look at the Windows app.
+      </p>
+    </div>
+  </div>
+  <div class="film-frame">
+    <video
+      id="peak-film"
+      controls
+      playsinline
+      preload="none"
+      poster="/media/promo-poster.jpg"
+      aria-label="Peak promo film, 36 seconds, native app UI with sample data"
+    >
+      <source src="/media/peak-promo.mp4" type="video/mp4" />
+      <track
+        default
+        kind="captions"
+        src="/media/peak-promo.vtt"
+        srclang="en"
+        label="English descriptions"
+      />
+      Your browser does not support video.{' '}
+      <a href="/media/peak-promo.mp4">Open the Peak film.</a>
+    </video>
+  </div>
+  <div class="film-chapters" aria-label="Film chapters">
+    {chapters.map((chapter) => (
+      <button type="button" data-film-time={chapter.at}>
+        <span>{chapter.time}</span>
+        {chapter.label}
+        <Icon name="play" size={13} />
+      </button>
+    ))}
+  </div>
+  <div class="film-caption">
+    <p>
+      Native Windows app screens · sample data · editorial animation · music
+    </p>
+    <details>
+      <summary>Read the film transcript</summary>
+      <p>
+        00:00 — Stay in flow. The compact Peak island keeps a quiet place at the
+        top of your desktop.
+      </p>
+      <p>
+        00:04 — Know what’s left. Codex and Claude usage, reset times, and one
+        quick glance.
+      </p>
+      <p>
+        00:10 — Know what’s moving. Codex task activity and project context.
+      </p>
+      <p>
+        00:16 — Your turn. Amber signals a reported review request. Respond in
+        Codex.
+      </p>
+      <p>00:21 — Make it yours. Dark, light, and custom island colors.</p>
+      <p>00:27 — There when you need it. Hover, pin, and pointer fading.</p>
+      <p>00:32 — Peak. A little island. A clearer picture.</p>
+    </details>
+  </div>
+</section>
+<script>
+  const video = document.querySelector<HTMLVideoElement>('#peak-film');
+  document
+    .querySelectorAll<HTMLButtonElement>('[data-film-time]')
+    .forEach((button) =>
+      button.addEventListener('click', () => {
+        if (!video) return;
+        const jump = () => {
+          video.currentTime = Number(button.dataset.filmTime);
+          void video.play().catch(() => {
+            video.focus();
+          });
+        };
+        if (video.readyState >= 1) jump();
+        else {
+          video.addEventListener('loadedmetadata', jump, { once: true });
+          video.load();
+        }
+      }),
+    );
+</script>

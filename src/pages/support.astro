@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import publication from '../data/publication.json';
+---
+
+<Layout
+  title="Support — Peak"
+  description="Peak installation help, bug reports, privacy requests, security reports, and a guide to sharing sanitized diagnostic information."
+>
+  <div class="wrap">
+    <header class="page-hero">
+      <span class="eyebrow">
+        <span class="tiny-cross">+</span> A LITTLE HELP, WHEN YOU NEED IT
+      </span>
+      <h1>
+        Let’s get you
+        <br />
+        back in <span class="heading-emphasis">flow.</span>
+      </h1>
+      <p>
+        Installation help, bug reports, privacy requests, and security concerns.
+        Ordinary support is best effort.
+      </p>
+    </header>
+    {!publication.supportEmail && (
+      <div class="notice-banner">
+        <Icon name="mail" />
+        <div>
+          <strong>Support contact is being prepared.</strong> A dedicated Gmail
+          mailbox will be verified and published before the public release. No
+          address has been supplied yet.
+        </div>
+      </div>
+    )}
+    <div class="page-grid">
+      <div>
+        <section class="content-block">
+          <h2>Share a useful, sanitized report</h2>
+          <p>
+            Start with a short description of what you expected, what happened,
+            and the steps that reproduce it. Send only the information needed to
+            understand the problem.
+          </p>
+          <div class="report-checklist">
+            <div>
+              <h3>Include</h3>
+              <p>
+                Peak version, Windows version, provider CLI versions, installer
+                or portable package, the feature involved, and a minimal
+                reproduction. Note whether the issue happens in demo mode.
+              </p>
+            </div>
+            <div>
+              <h3>Remove</h3>
+              <p>
+                Account labels, chat titles, prompts, command arguments, private
+                paths, tokens, credentials, and unrelated work. Crop screenshots
+                to the relevant interface.
+              </p>
+            </div>
+          </div>
+          <p>
+            Do not send complete provider transcripts, raw session logs,
+            credential stores, <code>auth.json</code>, or restoration backups.
+            Peak never automatically uploads diagnostics. If additional
+            information is needed, support can explain how to share a smaller
+            sanitized example.
+          </p>
+        </section>
+        <section class="content-block">
+          <h2>A few checks before you write</h2>
+          <h3>The island is hidden</h3>
+          <p>
+            Try the default reveal shortcut, <code>Ctrl+Alt+U</code>, or choose{' '}
+            <strong>Show details</strong> from the tray. A saved alternative
+            shortcut, presence mode, pointer fading, or fullscreen setting can
+            change visibility.
+          </p>
+          <h3>Usage is unavailable or stale</h3>
+          <p>
+            Check that the provider is enabled and its compatible CLI is
+            installed and signed in. Codex requires a usable Windows credential
+            store. Claude refreshes usage during CLI activity. A dash is unknown
+            data, not zero usage.
+          </p>
+          <h3>Codex review requests are missing</h3>
+          <p>
+            Check hook support and trust in Codex, then reconnect the chat.
+            Managed restrictions, remote execution, or unsupported hooks can
+            prevent observations. Peak never grants hook trust or changes
+            approval policies.
+          </p>
+          <h3>Screen sharing still captures Peak</h3>
+          <p>
+            Capture exclusion depends on the recording tool. Check an actual
+            capture before sharing; do not rely on it as a universal guarantee.
+          </p>
+          <p>
+            <a href="/download/#setup">Full setup instructions</a>
+          </p>
+        </section>
+        <section class="content-block">
+          <h2>Privacy and security reports</h2>
+          <p>
+            Use the same support mailbox for requests to access, correct, or
+            delete publisher-held support information. Identify the
+            correspondence involved without including unnecessary private data.
+            Applicable privacy deadlines take precedence over ordinary support
+            handling.
+          </p>
+          <p>
+            For a security concern, use a clear subject such as “Peak security
+            report,” describe the affected version and impact, and provide a
+            sanitized reproduction. Avoid public disclosure of credentials or
+            another person’s data.
+          </p>
+          <h3>Support correspondence</h3>
+          <p>
+            The proposed default is to delete resolved correspondence after 90
+            days, except records required for an ongoing dispute or legal
+            obligation. Unresolved issues are kept while being handled. See the
+            privacy draft for hosting and mailbox processing.
+          </p>
+        </section>
+      </div>
+      <aside class="page-aside">
+        <div class="aside-card">
+          <span class="eyebrow">CONTACT</span>
+          <h2>
+            One mailbox.
+            <br />A direct conversation.
+          </h2>
+          {publication.supportEmail ? (
+            <>
+              <p>{publication.supportEmail}</p>
+              <a
+                class="button button-primary"
+                href={`mailto:${publication.supportEmail}`}
+              >
+                Email Peak support <Icon name="mail" size={16} />
+              </a>
+            </>
+          ) : (
+            <p>The verified support email will appear here before launch.</p>
+          )}
+          <p>No contact form, account, or automatic attachment upload.</p>
+        </div>
+        <div class="aside-card">
+          <span class="eyebrow">HELPFUL LINKS</span>
+          <div class="aside-links">
+            <a href="/download/">Downloads & setup ↗</a>
+            <a href="/privacy/">Privacy ↗</a>
+            <a href="/terms/">Freeware terms ↗</a>
+            <a href="/#playground">Try the sample playground ↗</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>

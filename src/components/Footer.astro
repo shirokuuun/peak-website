@@ -1,0 +1,29 @@
+---
+import publication from '../data/publication.json';
+import Icon from './Icon.astro';
+---
+
+<footer class="site-footer wrap">
+  <div class="footer-top">
+    <a href="/" class="brand">
+      <img src="/peak-icon.png" width="32" height="32" alt="" />
+      <span>PEAK</span>
+    </a>
+    <p>Your AI workflow. At a glance.</p>
+    <a href="/#top" class="back-top">
+      Back to top <Icon name="diagonal" size={16} />
+    </a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 {publication.publisherName || 'Peak'}. Independent software.</p>
+    <nav aria-label="Footer navigation">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Freeware terms</a>
+      <a href="/notices/">Notices</a>
+      <a href="/support/">Contact</a>
+    </nav>
+  </div>
+  <p class="affiliation">
+    Peak is not affiliated with or endorsed by OpenAI, Anthropic, or Microsoft.
+  </p>
+</footer>

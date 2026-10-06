@@ -1,0 +1,58 @@
+---
+import '@fontsource-variable/oxanium';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Peak — Keep your AI work in view.',
+  description = 'A free Windows island for Codex and Claude usage, with Codex task activity. Explore Peak with an interactive demo.',
+} = Astro.props;
+const publicBuild =
+  import.meta.env.PEAK_PUBLIC_BUILD === '1' ||
+  import.meta.env.VERCEL_ENV === 'production';
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080808" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {!publicBuild && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/png" href="/peak-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Peak" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {Astro.site && (
+      <meta
+        property="og:image"
+        content={new URL('/media/social-card.jpg', Astro.site).href}
+      />
+    )}
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

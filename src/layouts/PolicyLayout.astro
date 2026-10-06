@@ -1,0 +1,49 @@
+---
+import Layout from './Layout.astro';
+import publication from '../data/publication.json';
+import Icon from '../components/Icon.astro';
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+
+<Layout title={`${title} — Peak`} description={description}>
+  <div class="wrap">
+    <div class="policy-wrap">
+      <header class="page-hero">
+        <span class="eyebrow">
+          <span class="tiny-cross">+</span> THE DETAILS, IN PLAIN SIGHT
+        </span>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </header>
+      {!publication.policiesReviewed && (
+        <div class="notice-banner">
+          <Icon name="shield" />
+          <div>
+            <strong>Policy draft for the upcoming freeware release.</strong>{' '}
+            Publisher details and final review are pending. These drafts
+            describe the planned release and have not yet been synchronized with
+            the current app.
+          </div>
+        </div>
+      )}
+      <div class="policy-meta">
+        <span>
+          VERSION <strong>{publication.policyVersion}</strong>
+        </span>
+        <span>{publication.policyDate}</span>
+        <span>{publication.publisherName || 'Publisher identity pending'}</span>
+      </div>
+      <div class="prose">
+        <slot />
+      </div>
+      <p class="policy-support-note">
+        For help, privacy requests, or security concerns, see{' '}
+        <a href="/support/">Support</a>.
+      </p>
+    </div>
+  </div>
+</Layout>

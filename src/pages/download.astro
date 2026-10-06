@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import publication from '../data/publication.json';
+import release from '../data/release.json';
+import { isReleaseReady } from '../lib/release.mjs';
+const ready = isReleaseReady(release);
+---
+
+<Layout
+  title="Download & setup — Peak"
+  description="Peak for Windows: release availability, system requirements, Codex and Claude setup, manual updates, and unsigned-app information."
+>
+  <div class="wrap">
+    <header class="page-hero">
+      <span class="eyebrow">
+        <span class="tiny-cross">+</span> PEAK FOR WINDOWS
+      </span>
+      <h1>
+        A small addition.
+        <br />A clearer <span class="heading-emphasis">desktop.</span>
+      </h1>
+      <p>
+        Free for personal and workplace use, on unlimited devices. Your
+        compatible provider tools and subscriptions supply the live readings.
+      </p>
+    </header>
+    {!ready && (
+      <div class="notice-banner">
+        <Icon name="window" />
+        <div>
+          <strong>Free release coming soon.</strong> This is the website
+          preview. Installer and portable downloads will appear here after the
+          freeware build and its release assets are verified.
+        </div>
+      </div>
+    )}
+    <div class="page-grid">
+      <div>
+        <section class="content-block" aria-labelledby="downloads-title">
+          <h2 id="downloads-title">Choose your download</h2>
+          <div class="release-facts">
+            <span>
+              Requirements<strong>{release.requirements}</strong>
+            </span>
+            <span>
+              Current public version
+              <strong>
+                {ready ? `v${release.version}` : 'Not published yet'}
+              </strong>
+            </span>
+            <span>
+              Runtime<strong>Included in the public packages</strong>
+            </span>
+          </div>
+          <div class="download-cards">
+            <article class="download-card">
+              <Icon name="download" size={28} />
+              <h3>Windows installer</h3>
+              <p>
+                The regular setup. Install for your Windows user, with a
+                Start-menu shortcut and an uninstaller.
+              </p>
+              {ready ? (
+                <>
+                  <a
+                    class="button button-primary"
+                    href={release.installer.url || undefined}
+                  >
+                    Download installer <Icon name="download" size={16} />
+                  </a>
+                  <p>SHA-256</p>
+                  <code>{release.installer.sha256}</code>
+                </>
+              ) : (
+                <span class="download-pending">
+                  AVAILABLE WITH THE FREE RELEASE
+                </span>
+              )}
+            </article>
+            <article class="download-card">
+              <Icon name="code" size={28} />
+              <h3>Portable ZIP</h3>
+              <p>
+                Extract the complete folder and launch Peak. Keep its runtime
+                files, bridges, and notices together.
+              </p>
+              {ready ? (
+                <>
+                  <a class="button" href={release.portable.url || undefined}>
+                    Download ZIP <Icon name="download" size={16} />
+                  </a>
+                  <p>SHA-256</p>
+                  <code>{release.portable.sha256}</code>
+                </>
+              ) : (
+                <span class="download-pending">
+                  AVAILABLE WITH THE FREE RELEASE
+                </span>
+              )}
+            </article>
+          </div>
+          {ready && (
+            <p>
+              <a href={release.releaseNotesUrl || undefined}>
+                Release notes for v{release.version}
+              </a>{' '}
+              · Published {release.publishedAt}
+            </p>
+          )}
+        </section>
+        <section id="setup" class="content-block">
+          <h2>Start with the providers you use</h2>
+          <p>
+            New installations start with providers disabled. Open Settings →
+            Providers, read the access explanation, and enable the integrations
+            you want. Peak does not supply an AI account, subscription, or
+            credits.
+          </p>
+          <h3>Codex usage</h3>
+          <ol>
+            <li>Install a compatible Codex CLI or desktop app.</li>
+            <li>
+              In your user-level Codex configuration, choose the Windows
+              credential store:
+            </li>
+          </ol>
+          <pre><code>cli_auth_credentials_store = "keyring"</code></pre>
+          <p>
+            Run <code>codex login</code> yourself and finish signing in with
+            ChatGPT. Then enable Codex in Peak and refresh. Peak uses Codex’s
+            local app-server interface; it does not start model turns or copy
+            your credentials.
+          </p>
+          <h3>Codex task activity</h3>
+          <p>
+            Choose <strong>Connect task activity</strong> in Peak. It adds its
+            observer entries while preserving unrelated hooks. Use{' '}
+            <code>/hooks</code> in Codex to review and trust them, then
+            reconnect existing chats. Hook support, your explicit trust, and a
+            local supported environment are required for observer-based review
+            reporting.
+          </p>
+          <p>
+            Bounded local logs may also provide activity and question
+            observations. Missing approval observations do not mean there are no
+            approvals. Reported states can become stale; respond in Codex.
+          </p>
+          <h3>Claude usage</h3>
+          <p>
+            Choose <strong>Connect Claude</strong>, enable Claude, and save.
+            Restart Claude Code and use it once. A compatible CLI, supported
+            subscription, and reported rate-limit fields are required. Peak
+            preserves the output of an existing status-line command and keeps a
+            protected restoration backup.
+          </p>
+          <p>
+            Claude readings update during CLI activity and can become stale.
+            Reconnect after changing accounts. Claude task or approval
+            monitoring is not included.
+          </p>
+        </section>
+        <section id="windows-warnings" class="content-block">
+          <h2>About Windows security warnings</h2>
+          <p>
+            {ready
+              ? `This release is ${release.signingStatus}.`
+              : 'The first freeware release may be unsigned.'}{' '}
+            Windows can warn about or block unsigned applications. A SHA-256
+            checksum checks that a file matches the published download; it does
+            not replace a trusted code signature or establish that an
+            application is safe.
+          </p>
+          <p>
+            Use only the official verified release links, check the publisher
+            and signing status, and follow your workplace’s installation policy.
+            If Windows blocks installation, keep its protections in place and
+            contact support. You do not need to disable security software to use
+            this website.
+          </p>
+          <h3>Compare a published checksum</h3>
+          <p>
+            After a release is available, run this in PowerShell for the file
+            you downloaded and compare the result with the SHA-256 value above:
+          </p>
+          <pre><code>Get-FileHash -Algorithm SHA256 -LiteralPath 'C:\path\to\download.exe'</code></pre>
+        </section>
+        <section id="updates" class="content-block">
+          <h2>Update, disconnect, or uninstall</h2>
+          <p>
+            Updates are manual. Exit Peak before replacing it. Use the next
+            verified installer or replace the complete portable folder; do not
+            distribute or move <code>Peak.exe</code> alone.
+          </p>
+          <p>
+            Provider disconnection removes only Peak-owned integration entries.
+            Claude restoration is applied only when the installed status line
+            still matches; unrelated settings are preserved. Restart existing
+            CLI sessions to unload integrations already loaded there.
+          </p>
+          <p>
+            The installer’s uninstaller handles safe integration cleanup. Choose
+            complete local-data deletion only if you want to remove retained
+            settings and restoration data. For portable use, disconnect
+            integrations and exit Peak before removing its folder. Original
+            provider logs remain separate.
+          </p>
+        </section>
+      </div>
+      <aside class="page-aside">
+        <div class="aside-card">
+          <span class="eyebrow">GOOD TO KNOW</span>
+          <h2>
+            Free to use.
+            <br />
+            Yours to set up.
+          </h2>
+          <p>
+            No Peak payment, activation, account, device cap, or expiry in the
+            upcoming freeware release.
+          </p>
+          <p>
+            Source ownership is retained. Freeware does not mean open source.
+          </p>
+          <div class="aside-links">
+            <a href="/terms/">Read the freeware terms ↗</a>
+            <a href="/privacy/">Read the privacy draft ↗</a>
+            <a href="/notices/">Third-party notices ↗</a>
+          </div>
+        </div>
+        <div class="aside-card">
+          <span class="eyebrow">NEED A HAND?</span>
+          <h2>Setup & support</h2>
+          <p>
+            {publication.supportEmail
+              ? 'Send a sanitized report to the dedicated support mailbox.'
+              : 'The dedicated support mailbox will be published before launch. The support page explains what to include in a report.'}
+          </p>
+          <a class="button" href="/support/">
+            Support guide <Icon name="arrow" size={15} />
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>

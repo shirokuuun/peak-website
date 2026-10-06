@@ -1,0 +1,13 @@
+{
+  "available": false,
+  "verified": false,
+  "version": null,
+  "publishedAt": null,
+  "architecture": "x64",
+  "requirements": "Windows 10 version 2004 or later, or Windows 11 · x64",
+  "signingStatus": "unsigned",
+  "repositoryUrl": "https://github.com/shirokuuun/Peak-releases",
+  "releaseNotesUrl": null,
+  "installer": { "url": null, "sha256": null },
+  "portable": { "url": null, "sha256": null }
+}

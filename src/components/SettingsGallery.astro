@@ -1,0 +1,108 @@
+---
+const tabs = [
+  {
+    id: 'appearance',
+    title: 'Your palette.',
+    description:
+      'Dark, light, system, or any color that feels like your workspace. The island adapts its text to stay readable.',
+    image: 'settings-appearance.png',
+    label: 'Appearance',
+  },
+  {
+    id: 'presence',
+    title: 'Your pace.',
+    description:
+      'Always there, only when work is active, or waiting for a hover. Choose what happens in fullscreen, too.',
+    image: 'settings-presence.png',
+    label: 'Presence',
+  },
+  {
+    id: 'outofway',
+    title: 'Your space.',
+    description:
+      'Let Peak fade under your pointer. Hold Alt or use your reveal shortcut when you want to reach it.',
+    image: 'settings-outofway.png',
+    label: 'Out of the way',
+  },
+];
+---
+
+<section
+  id="personalize"
+  class="settings-section section-space wrap"
+  aria-labelledby="settings-title"
+>
+  <div class="settings-copy">
+    <span class="eyebrow">
+      <span class="tiny-cross">+</span> MAKE IT YOURS
+    </span>
+    <h2 id="settings-title">
+      Your desktop.
+      <br />
+      Your <span class="heading-emphasis">rules.</span>
+    </h2>
+    <p>
+      A quiet companion should fit your habits.
+      <br />
+      Peak gives you the switches.
+    </p>
+    <div class="settings-buttons" aria-label="Choose a settings screen">
+      {tabs.map((tab, i) => (
+        <button
+          type="button"
+          data-settings-select={tab.id}
+          aria-pressed={i === 0}
+        >
+          <span>0{i + 1}</span>
+          {tab.label}
+          <span>↗</span>
+        </button>
+      ))}
+    </div>
+    {tabs.map((tab, i) => (
+      <div data-settings-description={tab.id} hidden={i !== 0}>
+        <h3>{tab.title}</h3>
+        <p>{tab.description}</p>
+      </div>
+    ))}
+  </div>
+  <figure class="settings-frame">
+    <img
+      data-settings-shot
+      src="/screens/settings-appearance.png"
+      alt="Native Peak Appearance settings screen with sample preview data."
+      width="2640"
+      height="2160"
+      loading="lazy"
+    />
+    <figcaption>Native app settings · demo preview</figcaption>
+  </figure>
+</section>
+<script>
+  const tabs = {
+    appearance: 'settings-appearance.png',
+    presence: 'settings-presence.png',
+    outofway: 'settings-outofway.png',
+  };
+  const shot = document.querySelector<HTMLImageElement>('[data-settings-shot]');
+  document
+    .querySelectorAll<HTMLButtonElement>('[data-settings-select]')
+    .forEach((button) =>
+      button.addEventListener('click', () => {
+        const key = button.dataset.settingsSelect as keyof typeof tabs;
+        if (!shot || !tabs[key]) return;
+        shot.src = `/screens/${tabs[key]}`;
+        shot.alt = `Native Peak ${button.textContent?.trim()} settings screen with sample preview data.`;
+        document
+          .querySelectorAll<HTMLButtonElement>('[data-settings-select]')
+          .forEach((item) =>
+            item.setAttribute('aria-pressed', String(item === button)),
+          );
+        document
+          .querySelectorAll<HTMLElement>('[data-settings-description]')
+          .forEach(
+            (item) => (item.hidden = item.dataset.settingsDescription !== key),
+          );
+      }),
+    );
+</script>
