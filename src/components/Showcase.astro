@@ -1,0 +1,112 @@
+---
+const shots = [
+  {
+    file: '01-usage-limits.png',
+    title: 'Your limits. One glance.',
+    description:
+      'Codex and Claude usage, with remaining limits and reset times.',
+  },
+  {
+    file: '02-codex-attention.png',
+    title: 'Know when it’s your turn.',
+    description: 'Reported Codex requests for attention. Respond in Codex.',
+  },
+  {
+    file: '03-codex-activity.png',
+    title: 'Keep the work in view.',
+    description: 'Local Codex task activity, project names, and elapsed time.',
+  },
+  {
+    file: '04-appearance.png',
+    title: 'A look that fits your desktop.',
+    description:
+      'Light and dark appearances, using Peak’s native Windows controls.',
+  },
+];
+---
+
+<section
+  id="showcase"
+  class="showcase-section wrap section-space"
+  aria-labelledby="showcase-title"
+>
+  <div class="section-intro">
+    <span class="eyebrow">PEAK / IN FOCUS</span>
+    <h2 id="showcase-title">
+      THE DETAILS.
+      <br />
+      UP CLOSE.
+    </h2>
+    <p>Real Windows app views. More room to see what matters.</p>
+  </div>
+  <div class="showcase-grid">
+    {shots.map((shot) => (
+      <figure class="showcase-card">
+        <a
+          href={`/screens/showcase/${shot.file}`}
+          aria-label={`Open full-size image: ${shot.title}`}
+        >
+          <img
+            src={`/screens/showcase/${shot.file}`}
+            width="1920"
+            height="1080"
+            loading="lazy"
+            alt={`${shot.title} ${shot.description} Actual Peak interface with sample data.`}
+          />
+        </a>
+        <figcaption>
+          <strong>{shot.title}</strong>
+          <p>{shot.description}</p>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+  <p class="showcase-disclosure">
+    Actual Peak controls rendered with sample data. Select an image to open its
+    full-size 1920 × 1080 view.
+  </p>
+</section>
+<style>
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+  .showcase-card {
+    margin: 0;
+    min-width: 0;
+  }
+  .showcase-card a {
+    display: block;
+    border: 1px solid #343434;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #eee;
+  }
+  .showcase-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .showcase-card figcaption {
+    padding: 20px 2px;
+  }
+  .showcase-card strong {
+    font-size: 1.2rem;
+  }
+  .showcase-card p,
+  .showcase-disclosure {
+    color: #aaa;
+    line-height: 1.7;
+  }
+  .showcase-disclosure {
+    margin-top: 16px;
+    font-size: 0.85rem;
+  }
+  @media (max-width: 760px) {
+    .showcase-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+</style>

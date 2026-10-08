@@ -6,6 +6,10 @@ import Story from '../components/Story.astro';
 import Film from '../components/Film.astro';
 import SettingsGallery from '../components/SettingsGallery.astro';
 import DownloadCta from '../components/DownloadCta.astro';
+import release from '../data/release.json';
+import { isReleaseReady } from '../lib/release.mjs';
+import Showcase from '../components/Showcase.astro';
+const downloadUrl = isReleaseReady(release) ? release.storeUrl : '/download/';
 const faqs = [
   [
     'What does Peak monitor?',
@@ -29,7 +33,7 @@ const faqs = [
   ],
   [
     'How will I get updates?',
-    'Download a verified installer or portable ZIP from this website. Updates are manual. Peak does not silently download or install them.',
+    'Install Peak from Microsoft Store. Store updates follow your Microsoft Store settings; you can also check for updates in the Store’s Library. Peak does not run a separate updater.',
   ],
 ];
 ---
@@ -45,7 +49,7 @@ const faqs = [
   <section class="hero wrap" aria-labelledby="hero-title">
     <div class="hero-copy">
       <div class="hero-eyebrow">
-        <span class="status-dot" /> PEAK / WINDOWS UTILITY
+        <span class="status-dot" /> NOW ON MICROSOFT STORE
       </div>
       <h1 id="hero-title">
         YOUR AI WORK.
@@ -58,16 +62,15 @@ const faqs = [
         One compact island. No constant window switching.
       </p>
       <div class="hero-actions">
-        <a href="/download/" class="button button-primary">
-          Get Peak for Windows <Icon name="download" size={18} />
+        <a href={downloadUrl} class="button button-primary">
+          Get it on Microsoft Store <Icon name="download" size={18} />
         </a>
         <a href="#playground" class="button button-ghost">
           Explore the demo <Icon name="arrow" size={18} />
         </a>
       </div>
       <p class="hero-release-note">
-        FREE RELEASE COMING SOON <span>/</span> WINDOWS 10 / 11 <span>/</span>{' '}
-        X64
+        FREE <span>/</span> WINDOWS 10 / 11 <span>/</span> X64
       </p>
     </div>
     <div class="hero-stage">
@@ -89,9 +92,9 @@ const faqs = [
         Cl <span>Claude Code</span>
       </span>
     </div>
-    <p>Usage for both. Task activity for Codex.</p>
   </div>
   <Story />
+  <Showcase />
   <Film />
   <section
     id="playground"
@@ -164,7 +167,7 @@ const faqs = [
       </div>
       <div>
         <span>03</span>
-        <h3>Keep what matters. Clear the rest.</h3>
+        <h3>Keep what matters.</h3>
         <p>
           Owned observations are bounded and pruned after seven days during
           maintenance. You can clear them or disconnect.

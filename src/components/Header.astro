@@ -1,5 +1,8 @@
 ---
 import Icon from './Icon.astro';
+import release from '../data/release.json';
+import { isReleaseReady } from '../lib/release.mjs';
+const downloadUrl = isReleaseReady(release) ? release.storeUrl : '/download/';
 const active = Astro.url.pathname;
 ---
 
@@ -20,8 +23,8 @@ const active = Astro.url.pathname;
         Support
       </a>
     </nav>
-    <a class="button button-small header-download" href="/download/">
-      Download <Icon name="download" size={15} />
+    <a class="button button-small header-download" href={downloadUrl}>
+      Get Peak <Icon name="download" size={15} />
     </a>
     <button
       class="menu-button"
@@ -38,7 +41,8 @@ const active = Astro.url.pathname;
     <a href="/#playground">Playground</a>
     <a href="/#film">Film</a>
     <a href="/support/">Support</a>
-    <a href="/download/">Get Peak for Windows</a>
+    <a href={downloadUrl}>Get Peak on Microsoft Store</a>
+    <a href="/download/">Installation & setup</a>
   </nav>
   <noscript>
     <nav class="fallback-nav" aria-label="Navigation">

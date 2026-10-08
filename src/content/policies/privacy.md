@@ -4,7 +4,7 @@ Policy version 1.1 · October 6, 2026
 
 ## What this notice covers
 
-This notice covers Peak, published by **neorangel**, this website, GitHub download distribution, and support correspondence. Contact: **peakforwindows.support@gmail.com**. Peak is an independent Windows utility.
+This notice covers Peak, published by **neorangel**, this website, Microsoft Store distribution, and support correspondence. Contact: **peakforwindows.support@gmail.com**. Peak is an independent Windows utility.
 
 ## Provider access is your choice
 
@@ -18,7 +18,7 @@ Peak does not start model turns, grant approvals, or store provider credentials.
 
 ## What stays on the computer
 
-Preferences and observations use the legacy `%LOCALAPPDATA%/UsageNotch` location so upgrades can preserve existing settings and connections. Local information can include:
+The Store edition keeps preferences, observations, copied bridges, and restoration information under `%USERPROFILE%/.peak/store`. Earlier desktop editions use `%LOCALAPPDATA%/UsageNotch`; the two editions keep separate local data. Local information can include:
 
 - Appearance and monitoring preferences, current usage readings, and alert checkpoints.
 - Reported quota percentages, reset times, CLI versions, task and turn identifiers, project leaf names, tool categories, and observation timestamps.
@@ -38,15 +38,17 @@ Preferences, the latest usage cache, alert checkpoints, and restoration informat
 
 Use the app’s privacy controls to clear owned observations, disconnect integrations, or request complete local-data deletion. Cleanup preserves unrelated provider settings. Claude restoration is attempted only when Peak’s installed status-line entry still matches; backups are retained when restoration cannot safely complete. Restart existing CLI sessions to unload integrations already loaded there.
 
+Before uninstalling the Store edition, disconnect integrations in Peak and restart existing provider sessions. Removing the Store package does not automatically remove its retained bridges or protected restoration information.
+
 An old paid-license file is ignored by the freeware release. It is removed only through explicit complete-data deletion. The freeware migration makes no merchant requests.
 
 ## The website and downloads
 
 This site has no analytics, advertising, account registration, contact form, newsletter, or automatic diagnostic upload. The interactive demos use sample data and do not connect to your installed providers. They keep their controls in page memory and reset on reload.
 
-Vercel serves the website and local media. Ordinary hosting can process IP addresses, request timestamps, browser information, and security or operational logs. Downloading release files from GitHub involves GitHub’s ordinary connection and download processing. The absence of analytics does not mean hosting providers process nothing.
+Vercel serves the website and local media. Ordinary hosting can process IP addresses, request timestamps, browser information, and security or operational logs. Installation and updates through Microsoft Store involve Microsoft’s ordinary account, connection, purchase history, and Store processing under its own terms and privacy practices. The absence of analytics does not mean hosting providers process nothing.
 
-See [Vercel’s privacy policy](https://vercel.com/legal/privacy-policy) and [GitHub’s privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) for their processing, locations, and retention.
+See [Vercel’s privacy policy](https://vercel.com/legal/privacy-policy) and [Microsoft’s privacy statement](https://privacy.microsoft.com/privacystatement) for their processing, locations, and retention.
 
 ## Support emails
 

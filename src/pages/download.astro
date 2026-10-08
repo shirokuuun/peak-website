@@ -9,7 +9,7 @@ const ready = isReleaseReady(release);
 
 <Layout
   title="Download & setup — Peak"
-  description="Peak for Windows: release availability, system requirements, Codex and Claude setup, manual updates, and unsigned-app information."
+  description="Install Peak free from Microsoft Store. Windows requirements, Codex and Claude connection setup, Store updates, and support."
 >
   <div class="wrap">
     <header class="page-hero">
@@ -25,89 +25,44 @@ const ready = isReleaseReady(release);
         compatible provider tools and subscriptions supply the live readings.
       </p>
     </header>
-    {!ready && (
-      <div class="notice-banner">
-        <Icon name="window" />
-        <div>
-          <strong>Free release coming soon.</strong> This is the website
-          preview. Installer and portable downloads will appear here after the
-          freeware build and its release assets are verified.
-        </div>
-      </div>
-    )}
     <div class="page-grid">
       <div>
         <section class="content-block" aria-labelledby="downloads-title">
-          <h2 id="downloads-title">Choose your download</h2>
+          <h2 id="downloads-title">Get Peak from Microsoft Store</h2>
           <div class="release-facts">
             <span>
               Requirements<strong>{release.requirements}</strong>
             </span>
             <span>
-              Current public version
-              <strong>
-                {ready ? `v${release.version}` : 'Not published yet'}
-              </strong>
+              Publisher<strong>{publication.publisherName}</strong>
             </span>
             <span>
-              Runtime<strong>Included in the public packages</strong>
+              Price<strong>Free · personal &amp; workplace use</strong>
             </span>
           </div>
-          <div class="download-cards">
-            <article class="download-card">
-              <Icon name="download" size={28} />
-              <h3>Windows installer</h3>
-              <p>
-                The regular setup. Install for your Windows user, with a
-                Start-menu shortcut and an uninstaller.
-              </p>
-              {ready ? (
-                <>
-                  <a
-                    class="button button-primary"
-                    href={release.installer.url || undefined}
-                  >
-                    Download installer <Icon name="download" size={16} />
-                  </a>
-                  <p>SHA-256</p>
-                  <code>{release.installer.sha256}</code>
-                </>
-              ) : (
-                <span class="download-pending">
-                  AVAILABLE WITH THE FREE RELEASE
-                </span>
-              )}
-            </article>
-            <article class="download-card">
-              <Icon name="code" size={28} />
-              <h3>Portable ZIP</h3>
-              <p>
-                Extract the complete folder and launch Peak. Keep its runtime
-                files, bridges, and notices together.
-              </p>
-              {ready ? (
-                <>
-                  <a class="button" href={release.portable.url || undefined}>
-                    Download ZIP <Icon name="download" size={16} />
-                  </a>
-                  <p>SHA-256</p>
-                  <code>{release.portable.sha256}</code>
-                </>
-              ) : (
-                <span class="download-pending">
-                  AVAILABLE WITH THE FREE RELEASE
-                </span>
-              )}
-            </article>
-          </div>
-          {ready && (
+          <article class="download-card store-download-card">
+            <Icon name="window" size={28} />
+            <h3>One place to install and update.</h3>
             <p>
-              <a href={release.releaseNotesUrl || undefined}>
-                Release notes for v{release.version}
-              </a>{' '}
-              · Published {release.publishedAt}
+              Open Peak’s official listing, select Download or View in Store,
+              and follow Microsoft Store’s installation steps. Launch Peak from
+              your Start menu.
             </p>
-          )}
+            {ready ? (
+              <a class="button button-primary" href={release.storeUrl}>
+                Get it on Microsoft Store <Icon name="diagonal" size={18} />
+              </a>
+            ) : (
+              <p>
+                The Store listing is temporarily unavailable. Please check back
+                or contact support.
+              </p>
+            )}
+            <p>
+              Microsoft Store manages installation and package updates. The .NET
+              runtime is included. Live usage requires the provider setup below.
+            </p>
+          </article>
         </section>
         <section id="setup" class="content-block">
           <h2>Start with the providers you use</h2>
@@ -119,15 +74,29 @@ const ready = isReleaseReady(release);
           </p>
           <h3>Codex usage</h3>
           <ol>
-            <li>Turn on <strong>Codex usage</strong> in Peak’s Settings → Providers.</li>
-            <li>Peak checks for the Windows CLI and reuses your existing ChatGPT login.</li>
-            <li>If needed, choose <strong>Install &amp; connect</strong>, then <strong>Sign in &amp; connect</strong>. Complete the provider’s sign-in screen.</li>
+            <li>
+              Turn on <strong>Codex usage</strong> in Peak’s Settings →
+              Providers.
+            </li>
+            <li>
+              Peak checks for the Windows CLI and reuses your existing ChatGPT
+              login.
+            </li>
+            <li>
+              If needed, choose <strong>Install &amp; connect</strong>, then{' '}
+              <strong>Sign in &amp; connect</strong>. Complete the provider’s
+              sign-in screen.
+            </li>
             <li>Save changes. Peak refreshes your usage automatically.</li>
           </ol>
           <p>
-            Peak respects Codex’s existing login configuration and reads its local app-server interface.
-            Provider credentials stay with Codex. API-key billing is separate from ChatGPT subscription limits.
-            <a href="https://learn.chatgpt.com/docs/codex/cli">Official Codex setup</a>.
+            Peak respects Codex’s existing login configuration and reads its
+            local app-server interface. Provider credentials stay with Codex.
+            API-key billing is separate from ChatGPT subscription limits.
+            <a href="https://learn.chatgpt.com/docs/codex/cli">
+              Official Codex setup
+            </a>
+            .
           </p>
           <h3>Codex task activity</h3>
           <p>
@@ -145,61 +114,55 @@ const ready = isReleaseReady(release);
           </p>
           <h3>Claude usage</h3>
           <ol>
-            <li>Turn on <strong>Claude usage</strong>. Peak installs its usage bridge automatically.</li>
-            <li>Choose <strong>Install &amp; connect</strong> if Claude Code is missing, then <strong>Open Claude Code</strong>.</li>
-            <li>Sign in with Claude Pro or Max. Send a prompt and wait for its first response. Restart existing Claude Code sessions to load the bridge.</li>
-            <li>Save changes. Peak receives usage as Claude Code reports it.</li>
+            <li>
+              Turn on <strong>Claude usage</strong>. Peak installs its usage
+              bridge automatically.
+            </li>
+            <li>
+              Choose <strong>Install &amp; connect</strong> if Claude Code is
+              missing, then <strong>Open Claude Code</strong>.
+            </li>
+            <li>
+              Sign in with Claude Pro or Max. Send a prompt and wait for its
+              first response. Restart existing Claude Code sessions to load the
+              bridge.
+            </li>
+            <li>
+              Save changes. Peak receives usage as Claude Code reports it.
+            </li>
           </ol>
           <p>
-            Use the Windows Claude Code CLI. The Claude chat website or desktop app alone,
-            and API-key accounts, do not supply these personal subscription readings to Peak.
-            Peak preserves an existing status-line command’s output and a protected restoration backup.
-            <a href="https://code.claude.com/docs/en/setup">Official Claude Code setup</a>.
+            Use the Windows Claude Code CLI. The Claude chat website or desktop
+            app alone, and API-key accounts, do not supply these personal
+            subscription readings to Peak. Peak preserves an existing
+            status-line command’s output and a protected restoration backup.
+            <a href="https://code.claude.com/docs/en/setup">
+              Official Claude Code setup
+            </a>
+            .
           </p>
           <p>
-            Installing and signing in take effect immediately; canceling Peak’s other preferences does not undo them.
-            Readings can become stale between CLI activity. Reconnect after changing accounts.
-            Claude task or approval monitoring is not included.
+            Installing and signing in take effect immediately; canceling Peak’s
+            other preferences does not undo them. Readings can become stale
+            between CLI activity. Reconnect after changing accounts. Claude task
+            or approval monitoring is not included.
           </p>
           <h3>If a command is not recognized</h3>
           <p>
-            Reopen PowerShell after installing, then check <code>codex --version</code> or <code>claude --version</code>.
-            Restart Peak if it was open during installation. Use connection setup above to install a missing CLI.
-            If Claude stays waiting, receive a response in a new Claude Code session and check that a project-level
-            status line is not replacing Peak’s user-level bridge.
+            Reopen PowerShell after installing, then check{' '}
+            <code>codex --version</code> or <code>claude --version</code>.
+            Restart Peak if it was open during installation. Use connection
+            setup above to install a missing CLI. If Claude stays waiting,
+            receive a response in a new Claude Code session and check that a
+            project-level status line is not replacing Peak’s user-level bridge.
           </p>
-        </section>
-        <section id="windows-warnings" class="content-block">
-          <h2>About Windows security warnings</h2>
-          <p>
-            {ready
-              ? `This release is ${release.signingStatus}.`
-              : 'The first freeware release may be unsigned.'}{' '}
-            Windows can warn about or block unsigned applications. A SHA-256
-            checksum checks that a file matches the published download; it does
-            not replace a trusted code signature or establish that an
-            application is safe.
-          </p>
-          <p>
-            Use only the official verified release links, check the publisher
-            and signing status, and follow your workplace’s installation policy.
-            If Windows blocks installation, keep its protections in place and
-            contact support. You do not need to disable security software to use
-            this website.
-          </p>
-          <h3>Compare a published checksum</h3>
-          <p>
-            Run this in PowerShell for the file you downloaded and compare the
-            result with the SHA-256 value above:
-          </p>
-          <pre><code>Get-FileHash -Algorithm SHA256 -LiteralPath 'C:\path\to\download.exe'</code></pre>
         </section>
         <section id="updates" class="content-block">
           <h2>Update, disconnect, or uninstall</h2>
           <p>
-            Updates are manual. Exit Peak before replacing it. Use the next
-            verified installer or replace the complete portable folder; do not
-            distribute or move <code>Peak.exe</code> alone.
+            Microsoft Store delivers updates according to your Store settings.
+            To check manually, open the Store’s Library and check for updates.
+            Peak has no separate updater.
           </p>
           <p>
             Provider disconnection removes only Peak-owned integration entries.
@@ -208,11 +171,16 @@ const ready = isReleaseReady(release);
             CLI sessions to unload integrations already loaded there.
           </p>
           <p>
-            The installer’s uninstaller handles safe integration cleanup. Choose
-            complete local-data deletion only if you want to remove retained
-            settings and restoration data. For portable use, disconnect
-            integrations and exit Peak before removing its folder. Original
-            provider logs remain separate.
+            Before uninstalling, disconnect integrations in Peak’s Privacy
+            settings and restart existing provider CLI sessions. Then remove
+            Peak in Windows Settings → Apps → Installed apps.
+          </p>
+          <p>
+            The Store edition keeps copied bridges and protected restoration
+            information in your per-user data folder, outside the installed
+            package. Use Peak’s Privacy controls for local-data cleanup; retain
+            restoration backups until provider settings are safely restored.
+            Original provider logs remain separate.
           </p>
         </section>
       </div>

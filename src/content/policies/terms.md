@@ -18,7 +18,7 @@ Resale and modified redistribution are restricted unless the publisher separatel
 
 Peak is a Windows 10 version 2004 or later / Windows 11 x64 desktop utility. Compatible installed provider tools and your own eligible accounts or subscriptions are required for live features. Provider interfaces and plan entitlements can change.
 
-Codex supports usage and local task observations. Claude supports usage through compatible reported status-line fields; Claude task or approval monitoring is not included. Multiple provider accounts, ARM64 packages, and Microsoft Store distribution are outside the initial release.
+Codex supports usage and local task observations. Claude supports usage through compatible reported status-line fields; Claude task or approval monitoring is not included. Multiple provider accounts and ARM64 packages are outside the current release. Peak is available through Microsoft Store.
 
 Peak does not increase quotas, start model turns, or grant or refuse provider approvals. Reports are observations and may become stale or be resolved elsewhere. Missing readings are unknown, not zero. Demo content uses labeled sample data.
 
@@ -26,13 +26,13 @@ Optional screen-capture exclusion depends on Windows and the capture application
 
 ## Updates and support
 
-Updates are manual downloads from the official verified distribution links. Peak does not automatically download or install updates. Use complete packages and exit the running app before replacement.
+Microsoft Store manages installation and updates for the Store edition, according to your Store settings. Peak does not run a separate updater. Install through the official Peak Microsoft Store listing.
 
 Ordinary support is best effort. Free access to a released version does not promise permanent compatibility with third-party services, a particular response time, or indefinite feature development. Applicable legal obligations and rights remain unaffected.
 
 ## Security and responsibility
 
-The first release may be unsigned. Windows can warn about or block unsigned apps. Checksums help compare a file with a published download; they do not substitute for a trusted signature or establish safety. Follow your organization’s installation policy.
+Install Peak from its official Microsoft Store listing, published by neorangel. Follow your organization’s installation policy.
 
 Use Peak with appropriate care for your environment. Keep provider credentials private, review integration consent, and check the provider’s own display when a reading or task state matters to your decision.
 

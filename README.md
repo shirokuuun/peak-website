@@ -29,22 +29,24 @@ npm run preview
 
 Production: https://peakforwindows.vercel.app. Import `shirokuuun/peak-website`, root `.`, Astro, Node 24.x, install `npm ci`, build `npm run build:public`, output `dist`. Root vercel.json supplies this configuration. Website main pushes deploy to production.
 
-The current release is Peak 1.0.1 freeware. Public versioned installer and portable ZIP downloads use the binary-only `shirokuuun/Peak-releases` repository. The application source repository stays private. The first release is unsigned; setup pages explain Windows warnings and show SHA-256 values.
+Peak is available free from Microsoft Store: https://apps.microsoft.com/detail/9P7C7HMFN9Z3, published by neorangel. Store installation and updates replace the website’s earlier package links. The private application source stays in its own repository.
 
-Publisher neorangel and support peakforwindows.support@gmail.com are recorded in `src/data/publication.json`. Policy version 1.0 in `src/content/policies` matches the application's embedded/package documents. Release metadata in `src/data/release.json` is generated from the package artifacts, and enabled only after both public downloads and hashes are verified. No runtime GitHub API or account is required.
+The existing website package version and release version field remain unchanged. The manifest version field is historical website metadata, not a claim about the Store package version; Microsoft Store displays the package version. Downloads use the canonical Store product URL, not individual versioned binaries.
 
-For future releases, use the private app repository's `scripts/package-release.ps1` and `scripts/verify-public-downloads.ps1 -WebsiteRoot D:/Languages/codex/peak_website`, then commit the generated manifest here. `npm run build:public` validates version, download URLs, hashes, contacts and synchronized policies before generating indexable pages and a sitemap. `npm run build` remains a local preview with noindex. Never add signing keys, API credentials or diagnostics.
+Publisher/contact and the freeware policy 1.1 baseline are recorded in `src/data/publication.json`. Website distribution and privacy details now describe the Store edition; they are not a byte-for-byte copy of the older desktop package documents. The underlying freeware rights remain unchanged. Future app packages should align their distribution-specific documentation through the app’s normal release process.
+
+`npm run build:public` checks the exact Peak Store identity and canonical HTTPS URL, availability, contacts, and reviewed policy baseline before generating indexable pages. The legacy package verification script must not overwrite this Store manifest. `npm run build` remains a local preview with noindex. Never add signing keys, API credentials or diagnostics.
 
 For a custom domain, add it in Vercel Domains, apply its DNS records, and update the same HTTPS origin in both app and website publishing metadata. Reassess hosting requirements if the project later introduces paid services or advertising.
 
 ## Media
 
-`public/media/peak-promo.mp4` is copied unchanged from the supplied Peak-Promo.mp4 (36.011 seconds, H.264/AAC, 1920×1080). A still from that file supplies the poster and social card. Playback requires a visitor action; there is no autoplay or media download on initial load. Descriptive captions and a text transcript are included.
+`public/media/peak-promo.mp4` is copied unchanged from the supplied Peak-Promo.mp4 (36.011 seconds, H.264/AAC, 1920×1080). A still supplies the film poster. The new usage showcase image supplies the social preview. Playback requires a visitor action; there is no autoplay or media download on initial load. Descriptive captions and a text transcript are included.
 
-`public/screens/` contains the supplied promo project’s native WPF screenshots, rendered using isolated demo fixtures. They are labeled as sample data. The interactive island is a separate web simulation, following Peak’s available features and remaining-usage semantics. In the playground, a finished task returns to idle after five seconds; stale data shows a dash.
+`public/screens/` contains native WPF screenshots rendered using isolated sample fixtures. The usage, activity, attention, compact, and presence views now use the published Store assembly. `public/screens/showcase/` contains five 1920 × 1080 feature compositions; the homepage links four at full size. Sample values and presentation graphics are labelled. The renderer lives in the private app repository's `tools/Peak.Showcase`; it never starts providers or touches live configuration. The interactive island is a separate web simulation, following Peak’s available features and remaining-usage semantics. In the playground, a finished task returns to idle after five seconds; stale data shows a dash.
 
-Oxanium, Space Grotesk, and JetBrains Mono are self-hosted. Their full font licenses are in `public/licenses/`. The film has original music; no reference-site images, copy, or source code are used. The supplied film and screenshots are presented in monochrome through CSS; their original files remain unchanged. Visitors can choose a custom color for the simulated app in the playground.
+Oxanium, Space Grotesk, and JetBrains Mono are self-hosted. Their full font licenses are in `public/licenses/`. The film has original music; no reference-site images, copy, or source code are used. The walkthrough and film use CSS grayscale. The new showcase compositions preserve the app’s status colors inside a neutral black-and-white layout. Visitors can choose a custom color for the simulated app in the playground.
 
 ## Checks
 
-The focused test suite covers release gating, invalid download URLs and hashes, missing contacts/review, stale and missing usage, presence priority, and custom-color contrast. Type checks and static builds run in the website CI workflow. See `VERIFICATION.md` for the recorded browser review.
+The focused test suite covers release gating, invalid Store URLs and product identity, missing contacts/review, stale and missing usage, presence priority, and custom-color contrast. Type checks and static builds run in the website CI workflow. See `VERIFICATION.md` for the recorded browser review.

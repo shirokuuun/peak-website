@@ -1,5 +1,17 @@
 # Website verification
 
+## Microsoft Store website update — October 8, 2026
+
+- Verified the public Peak Microsoft Store listing (`9P7C7HMFN9Z3`), title, neorangel publisher, and download action in the browser. Website download calls to action now open its canonical HTTPS listing. No versioned EXE/ZIP download links or unsigned-app messaging remain in generated website pages.
+- Release metadata version stays 1.0.1; website package version stays 1.0.0; policy baseline stays 1.1. Store installation/update/privacy details are updated separately and documented as distribution-specific changes, without claiming byte-for-byte parity with old desktop policy files.
+- All 11 focused tests pass, including Store URL/identity validation, availability gating, and prevention of legacy package downloads. Astro checks 27 files with zero errors, warnings, or hints. The public build produces seven pages, and all 206 local references resolve. Every page has one main heading and no duplicate IDs.
+- Browser review at 1280-pixel desktop width and 390 × 844 mobile confirms readable Store setup, a responsive showcase gallery, full-size image navigation, no broken showcase images, and no horizontal overflow. The Store button reaches the official published Peak listing. Mobile privacy metadata wraps correctly.
+- Five 1920 × 1080 showcase images render the actual published Store WPF controls with isolated sample data. Native captures export at 3× resolution. Review corrected resource inheritance and layout so usage cards are complete, native scrollbars retain their styles, and captions do not overlap the app. Neither live provider sessions nor existing user configuration was used.
+- The approved Store MSIX SHA-256 remains `beb0ac3117fd6db62a8e73da05f53c6488148612d2ca1fa7154611bc2e29ebdc`; no app version or package was changed. The screenshot ZIP includes five feature images, six native captures, captions, and an upload guide. Store listing uploads are left to the owner as requested.
+- LinkedIn launch copy is saved in `docs/linkedin-launch.md` as a draft; it has not been posted.
+
+Earlier entries below record historical release checks, not the current distribution method.
+
 Reviewed October 6, 2026, on Node.js 24.16.0. Local preview: `http://127.0.0.1:4321/`.
 
 The project was subsequently moved to `D:\Languages\codex\peak_website` as a standalone repository. All 59 website source and media files were verified against the preserved website, CI now runs from the repository root, and type checks, all nine tests, the static build, and the 214-reference audit passed again from that root. The application checkout and its existing uncommitted changes were verified unchanged.

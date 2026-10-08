@@ -20,13 +20,19 @@ const ready = isReleaseReady(release);
     <br />
     No Peak account. No activation. Your own provider subscriptions still apply.
   </p>
-  <a class="button button-primary" href="/download/">
-    {ready ? 'Download Peak for Windows' : 'Get Peak for Windows'}
+  <a
+    class="button button-primary"
+    href={ready ? release.storeUrl : '/download/'}
+  >
+    {ready ? 'Get it on Microsoft Store' : 'Get Peak for Windows'}
     <Icon name="download" size={18} />
   </a>
   <span class="cta-note">
     {ready
-      ? `v${release.version} · Windows x64`
+      ? 'Free on Microsoft Store · Windows x64'
       : 'Free release coming soon · Windows x64'}
   </span>
+  <a class="inline-link" href="/download/">
+    Installation & provider setup ↗
+  </a>
 </section>

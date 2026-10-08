@@ -37,9 +37,17 @@ const canonical = Astro.site
     {Astro.site && (
       <meta
         property="og:image"
-        content={new URL('/media/social-card.jpg', Astro.site).href}
+        content={
+          new URL('/screens/showcase/01-usage-limits.png', Astro.site).href
+        }
       />
     )}
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta
+      property="og:image:alt"
+      content="Peak on Microsoft Store: Codex and Claude usage limits, shown with sample data."
+    />
     {canonical && <meta property="og:url" content={canonical} />}
     <meta name="twitter:card" content="summary_large_image" />
   </head>
