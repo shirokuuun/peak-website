@@ -1,0 +1,19 @@
+# Peak website redesign
+
+November 5, 2026. Developed on `codex/local-website-remodel` and approved by the owner for publication through the website repository’s `main` branch.
+
+Run `npm run dev` from `D:/Languages/codex/peak_website`; the local preview is `http://127.0.0.1:4321/`. Production uses the existing GitHub-to-Vercel integration and `npm run build:public`. The Vercel configuration, website/package versions, and release metadata are unchanged. No application package or version is changed by publishing the website.
+
+The direction borrows tactile product presentation and hands-on interaction from https://getkeeby.com/, and concise, playful storytelling and tabbed screenshots from https://tryclucky.com/. Their artwork, testimonials, awards, copy, and statistics are not used.
+
+The page keeps the references' soft monochrome surfaces, bold type, rounded controls, and playful app presentation. Its composition is specific to Peak: an indented headline at the upper left, app identity and context to the right, a workspace preview offset below, and download controls in the opposite gutter. The physical monitor, oversized decorative percentage, centered icon/heading stack, and centered feature pills have been removed.
+
+The feature tour uses a numbered side rail, the native interface in the middle, and explanatory text to its right. Section headings and descriptions use different offsets, and the closing section places its call to action beside the heading. Privacy uses a compact local-data flow instead of a decorative 3D shield. The previous local Inter font family is retained throughout, including the large headings; no production font is restored. The exact provider PNGs and Inter font files come from the current app. Inter's full OFL notice is in `public/licenses/inter.txt`.
+
+The current app checkout contains other ongoing development changes; it was left untouched. Native screenshots were rendered from the existing `dist/Peak-1.0.7` assembly using an isolated helper under the ignored `.qa/native-capture` folder. The helper does not run application startup, show windows, open real provider services, or write user configuration. All readings and task names are fictional sample data. Dark, light, and mauve views retain the real controls, attached notch geometry, logos, and fonts. These are current development UI captures, not a claim that a new Store update has shipped.
+
+The browser demo includes both notch styles, remaining-usage semantics, light/dark/custom appearance, simulated activity/attention/stale states, and header dismissal. It remains a design simulation, without provider access. Captions distinguish these examples from the Store build, whose exact interactions can differ. The existing movie is retained and labelled as showing the earlier interface. A new 1200 × 630 social card uses the same Inter typography, supplied Peak icon, and native mauve sample screenshot.
+
+Local validation: 29 Astro files checked with no errors, warnings, or hints; 11 focused tests pass; the preview build passes. Browser checks cover tab switching and arrow-key navigation, mauve native screenshot selection, provider image/font loading, mobile menu and Escape dismissal, expanded limits, notch-style switching, unknown usage without numeric zero meters, header fading, and FAQ disclosure. Desktop and narrow responsive layouts show no document overflow. Production publication additionally uses the public build gate and verifies the deployed site.
+
+Main implementation files: `src/pages/index.astro`, `src/styles/remodel.css`, `src/components/ProductTour.tsx`, `src/components/PeakDemo.tsx`, and `src/components/StoreButton.astro`.

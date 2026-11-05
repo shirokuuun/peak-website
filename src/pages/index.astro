@@ -1,196 +1,273 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Icon from '../components/Icon.astro';
 import PeakDemo from '../components/PeakDemo';
-import Story from '../components/Story.astro';
+import ProductTour from '../components/ProductTour';
 import Film from '../components/Film.astro';
-import SettingsGallery from '../components/SettingsGallery.astro';
-import DownloadCta from '../components/DownloadCta.astro';
-import release from '../data/release.json';
-import { isReleaseReady } from '../lib/release.mjs';
-import Showcase from '../components/Showcase.astro';
-const downloadUrl = isReleaseReady(release) ? release.storeUrl : '/download/';
+import StoreButton from '../components/StoreButton.astro';
+import publication from '../data/publication.json';
 const faqs = [
   [
-    'What does Peak monitor?',
-    'Peak shows Codex and Claude subscription usage. Codex also supports local task activity, questions, and reported review requests. Claude task or approval monitoring is not included.',
+    'What does Peak actually show?',
+    'Codex and Claude subscription usage, including reported limits and reset times. Codex also supports local task activity, questions, and reported review requests. Claude task or approval monitoring is not included.',
   ],
   [
-    'Is Peak really free?',
-    'Peak is freeware for personal and workplace use on unlimited devices, with no Peak account, activation, or expiry. Your own compatible provider tools and subscriptions are required for live readings.',
+    'Is it really free?',
+    'Yes. Peak is freeware for personal and workplace use on unlimited devices. No Peak account, activation, or expiry. Your compatible provider tools and eligible subscriptions are separate.',
   ],
   [
-    'Does it change or approve my AI tasks?',
-    'No. Peak observes local activity. It does not start model turns or grant approvals. Review requests and questions are answered in Codex. Reports can become stale or be cleared elsewhere.',
+    'How do I connect my providers?',
+    'Open Settings → Providers and enable the integrations you use. Peak checks compatible Windows CLIs and existing logins, and guides you through installation or sign-in if needed. Codex task hooks need your separate review and trust. Claude usage arrives after a response in Claude Code.',
   ],
   [
-    'What happens to my data?',
-    'Providers start disabled. After consent, Peak reads the relevant local interfaces and keeps bounded observations on your computer. Peak has no remote usage backend or telemetry. Provider tools can make their own authenticated requests. See the privacy notice for retention and hosting details.',
+    'Does Peak read or upload my work?',
+    'Providers start disabled. With your consent, Peak reads the relevant local interfaces and keeps bounded observations on your computer. Peak has no telemetry or remote usage backend. Provider tools retain their own network behavior. See the privacy notice for retention and hosting details.',
   ],
   [
-    'Can I make it less visible?',
-    'Choose Always, When active, or On hover. Configure fullscreen behavior, pointer fading, a reveal shortcut, and optional capture exclusion. Screen-sharing behavior depends on the capture tool, so check it before sharing.',
+    'Can it get out of the way?',
+    'Adjust presence, notch style, and fullscreen behavior, or reveal Peak from the tray or a keyboard shortcut. The design previews show the latest interface; exact interactions can differ in your installed version. Optional capture exclusion depends on the recording tool; check a capture before sharing.',
   ],
   [
-    'How will I get updates?',
-    'Install Peak from Microsoft Store. Store updates follow your Microsoft Store settings; you can also check for updates in the Store’s Library. Peak does not run a separate updater.',
+    'Does it respond to tasks for me?',
+    'No. Peak observes. It does not start model turns or grant approvals. Respond to reported questions and review requests in Codex. Observations can become stale; a missing reading means unknown, not zero.',
+  ],
+  [
+    'How do updates work?',
+    'Microsoft Store manages installation and updates according to your Store settings. You can also check for updates in the Store Library. Peak has no separate updater.',
   ],
 ];
 ---
 
-<Layout>
-  <noscript>
-    <p class="notice-banner wrap">
-      The interactive previews and chapter buttons need JavaScript. The native
-      screenshots, film controls, transcript, setup instructions, and policy
-      pages remain available below.
-    </p>
-  </noscript>
-  <section class="hero wrap" aria-labelledby="hero-title">
-    <div class="hero-copy">
-      <div class="hero-eyebrow">
-        <span class="status-dot" /> NOW ON MICROSOFT STORE
-      </div>
-      <h1 id="hero-title">
-        YOUR AI WORK.
+<Layout
+  title="Peak — Stay in the work."
+  description="A free Windows notch for Codex and Claude usage, plus Codex task activity. Keep your limits in view and your head in the work."
+>
+  <section class="refresh-hero wrap" aria-labelledby="hero-title">
+    <div class="hero-edition">
+      <span>Peak for Windows</span>
+      <span>A little less checking. A little more headspace.</span>
+    </div>
+    <h1 id="hero-title">
+      Stay in
+      <br />
+      <span>the work.</span>
+    </h1>
+    <div class="hero-introduction">
+      <a
+        href="#playground"
+        class="hero-brand-token"
+        aria-label="Try Peak’s interactive demo"
+      >
+        <img src="/peak-icon.png" width="74" height="74" alt="" />
+      </a>
+      <span class="hero-side-rule" aria-hidden="true" />
+      <p>
+        Codex and Claude limits.
         <br />
-        <span class="hero-outline">IN CLEAR VIEW.</span>
-      </h1>
-      <p class="hero-description">
-        Codex and Claude usage. Codex task activity.
+        Codex task activity.
         <br />
-        One compact island. No constant window switching.
-      </p>
-      <div class="hero-actions">
-        <a href={downloadUrl} class="button button-primary">
-          Get it on Microsoft Store <Icon name="download" size={18} />
-        </a>
-        <a href="#playground" class="button button-ghost">
-          Explore the demo <Icon name="arrow" size={18} />
-        </a>
-      </div>
-      <p class="hero-release-note">
-        FREE <span>/</span> WINDOWS 10 / 11 <span>/</span> X64
+        <strong>One less thing to keep checking.</strong>
       </p>
     </div>
-    <div class="hero-stage">
-      <PeakDemo mode="hero" client:load />
-      <div class="hero-stage-caption">
-        <span>01 / LIVE PREVIEW</span>
-        <span>Browser simulation · sample data</span>
+    <div class="hero-download">
+      <StoreButton />
+      <p>
+        Free for personal &amp; workplace use.
+        <br />
+        Windows 10 / 11 · x64
+      </p>
+      <a class="soft-link" href="#story">
+        Explore the details <span aria-hidden="true">↘</span>
+      </a>
+    </div>
+    <figure class="hero-computer">
+      <div class="hero-workspace">
+        <div class="workspace-caption">
+          <span>
+            <span class="workspace-dot" /> A clearer view of your workspace.
+          </span>
+          <span>Try it ↓</span>
+        </div>
+        <PeakDemo mode="hero" client:load />
       </div>
+      <figcaption>
+        <span>Hover to open. Click the header to step aside.</span>
+        <span>Design preview · sample data</span>
+      </figcaption>
+    </figure>
+    <div class="hero-provider-line">
+      <span class="provider-line-label">Made for</span>
+      <span>
+        <img src="/providers/codex.png" width="25" height="25" alt="" />
+        Codex
+      </span>
+      <span>
+        <img src="/providers/claude.png" width="23" height="23" alt="" />
+        Claude Code
+      </span>
+      <p>
+        Usage for both.
+        <br />
+        Task activity for Codex.
+      </p>
     </div>
   </section>
-  <div class="product-strip wrap">
-    <span>SMALL BY DESIGN.</span>
-    <div>
-      <span class="provider-wordmark">
-        Cx <span>Codex</span>
-      </span>
-      <i>+</i>
-      <span class="provider-wordmark">
-        Cl <span>Claude Code</span>
-      </span>
+
+  <section id="story" class="refresh-section wrap" aria-labelledby="tour-title">
+    <header class="refresh-section-heading offset-heading">
+      <span class="soft-eyebrow">Get to know Peak</span>
+      <h2 id="tour-title">
+        The context you need.
+        <br />
+        <span>At the edge of your screen.</span>
+      </h2>
+      <p>
+        Four ways Peak keeps you connected to your work, without pulling you
+        away from it.
+      </p>
+    </header>
+    <ProductTour client:visible />
+    <noscript>
+      <div class="tour-fallback">
+        <img
+          src="/screens/limits-dark.png"
+          width="1884"
+          height="1656"
+          loading="lazy"
+          alt="Peak’s native Codex and Claude limits view with sample data."
+        />
+        <p>
+          Peak shows subscription limits for Codex and Claude, and task activity
+          for Codex. Actual Windows app; sample data.
+        </p>
+      </div>
+    </noscript>
+  </section>
+
+  <section class="attention-interlude" aria-labelledby="attention-title">
+    <div class="wrap attention-layout">
+      <div class="attention-copy">
+        <span class="soft-eyebrow">For the moments that need you</span>
+        <h2 id="attention-title">
+          Your turn.
+          <br />
+          Clearly marked.
+        </h2>
+        <p>
+          A reported Codex question or approval request brings the task into
+          view. Notice it in Peak. Handle it in Codex.
+        </p>
+        <a href="#playground" class="soft-link">
+          Try the “Your turn” state <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="attention-scene">
+        <span class="attention-halo" aria-hidden="true" />
+        <img
+          src="/screens/attention-dark.png"
+          width="1884"
+          height="234"
+          loading="lazy"
+          alt="Peak’s compact island displaying a sample Codex approval request."
+        />
+        <figcaption>
+          <span>Reported Codex attention</span>
+          <small>Native design preview · sample data</small>
+        </figcaption>
+      </figure>
     </div>
-  </div>
-  <Story />
-  <Showcase />
-  <Film />
+  </section>
+
   <section
     id="playground"
-    class="playground-section section-space wrap"
+    class="refresh-section wrap refresh-playground"
     aria-labelledby="playground-title"
   >
-    <div class="section-intro playground-intro">
-      <span class="eyebrow">02 / INTERACTIVE PLAYGROUND</span>
+    <header class="refresh-section-heading offset-heading">
+      <span class="soft-eyebrow">Try it on for size</span>
       <h2 id="playground-title">
-        PUT PEAK
+        Find your
         <br />
-        THROUGH ITS PACES.
+        <span>kind of quiet.</span>
       </h2>
       <p>
-        Set a state. Change the theme. Hover or tap the island.
-        <br />
-        Explore the behavior before you install.
+        A place to test the details. Switch appearances, change the activity,
+        and see how Peak fits your workflow.
       </p>
-    </div>
+    </header>
     <PeakDemo client:visible />
-    <div class="playground-disclosure">
-      <span class="sample-tag">BROWSER SIMULATION</span>
-      <p>
-        Sample data only. No provider access or computer settings are changed.
-      </p>
-    </div>
+    <p class="refresh-demo-disclosure">
+      <span class="demo-dot" /> Browser design preview · sample data · no
+      provider connection. Interactions may differ in the Store build.
+    </p>
   </section>
-  <SettingsGallery />
+
+  <Film />
+
   <section
-    id="privacy"
-    class="privacy-section wrap section-space"
+    class="refresh-section wrap small-on-purpose"
     aria-labelledby="privacy-title"
   >
-    <div>
-      <span class="eyebrow">
-        <span class="tiny-cross">+</span> LOCAL BY DESIGN
-      </span>
+    <aside class="local-ledger" aria-label="Peak’s local data flow">
+      <div class="ledger-heading">
+        <span>DATA FLOW</span>
+        <span>LOCAL OBSERVATIONS</span>
+      </div>
+      <div class="ledger-row">
+        <span>01</span>
+        <strong>Your provider tools</strong>
+        <small>The tools and accounts you choose.</small>
+      </div>
+      <div class="ledger-row">
+        <span>02</span>
+        <strong>Peak reads locally</strong>
+        <small>Reported limits and observed activity.</small>
+      </div>
+      <div class="ledger-row">
+        <span>03</span>
+        <strong>Your desktop</strong>
+        <small>A view into the work already happening.</small>
+      </div>
+      <p>No remote Peak usage backend.</p>
+    </aside>
+    <div class="privacy-copy">
+      <span class="soft-eyebrow">Your space, your rules</span>
       <h2 id="privacy-title">
-        Your work stays
+        A local view.
         <br />
-        in your <span class="heading-emphasis">workspace.</span>
+        On your terms.
       </h2>
       <p>
-        Peak reads what it needs, after you enable it.
-        <br />
-        The observations stay on your computer.
+        No Peak account. No telemetry. No remote usage backend. You choose the
+        providers. Peak keeps its observations on your computer.
       </p>
-      <a href="/privacy/" class="inline-link">
-        Read the privacy notice <Icon name="diagonal" size={17} />
+      <p class="privacy-small-print">
+        Provider tools still follow their own terms and network behavior. Peak
+        starts with integrations switched off.
+      </p>
+      <a href="/privacy/" class="soft-link">
+        A little more on privacy <span aria-hidden="true">↗</span>
       </a>
-    </div>
-    <div class="privacy-ledger">
-      <div>
-        <span>01</span>
-        <h3>It starts with your say-so.</h3>
-        <p>
-          Providers are disabled by default. Connection and monitoring are
-          choices you make.
-        </p>
-        <Icon name="shield" />
-      </div>
-      <div>
-        <span>02</span>
-        <h3>A local window into your work.</h3>
-        <p>
-          No Peak telemetry or remote usage backend. Provider tools retain their
-          own network behavior.
-        </p>
-        <Icon name="window" />
-      </div>
-      <div>
-        <span>03</span>
-        <h3>Keep what matters.</h3>
-        <p>
-          Owned observations are bounded and pruned after seven days during
-          maintenance. You can clear them or disconnect.
-        </p>
-        <Icon name="check" />
-      </div>
     </div>
   </section>
-  <section class="faq-section wrap section-space" aria-labelledby="faq-title">
-    <div>
-      <span class="eyebrow">
-        <span class="tiny-cross">+</span> GOOD TO KNOW
-      </span>
+
+  <section
+    id="questions"
+    class="refresh-section wrap refresh-faq"
+    aria-labelledby="faq-title"
+  >
+    <header class="refresh-section-heading">
+      <span class="soft-eyebrow">A few questions</span>
       <h2 id="faq-title">
-        A few
+        The details,
         <br />
-        <span class="heading-emphasis">answers.</span>
+        cleared up.
       </h2>
-      <a href="/support/" class="inline-link">
-        Setup & support <Icon name="diagonal" size={17} />
+      <p>Here’s a little clarity.</p>
+      <a href="/support/" class="soft-link">
+        Or say hello <span aria-hidden="true">↗</span>
       </a>
-    </div>
-    <div class="faq-list">
+    </header>
+    <div class="refresh-faq-list">
       {faqs.map(([question, answer]) => (
         <details>
           <summary>
@@ -198,9 +275,43 @@ const faqs = [
             <span aria-hidden="true">+</span>
           </summary>
           <p>{answer}</p>
+          {question === 'How do I connect my providers?' && (
+            <a href="/download/#setup" class="soft-link">
+              Provider setup guide ↗
+            </a>
+          )}
         </details>
       ))}
     </div>
   </section>
-  <DownloadCta />
+
+  <section class="refresh-closing wrap" aria-labelledby="closing-title">
+    <div class="closing-copy">
+      <span class="soft-eyebrow">Make room for your next idea</span>
+      <h2 id="closing-title">
+        Keep your
+        <br />
+        <span>head in it.</span>
+      </h2>
+      <p>Let Peak keep an eye on the limits.</p>
+    </div>
+    <div class="closing-action">
+      <StoreButton />
+      <span class="closing-note">
+        Free for personal and workplace use.
+        <br />
+        Your provider subscriptions remain separate.
+      </span>
+      <a class="soft-link" href="/download/">
+        Installation &amp; setup <span aria-hidden="true">↗</span>
+      </a>
+      <p class="maker-note">
+        An independent utility by{' '}
+        <a href={`mailto:${publication.supportEmail}`}>
+          {publication.publisherName}
+        </a>
+        .
+      </p>
+    </div>
+  </section>
 </Layout>

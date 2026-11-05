@@ -47,7 +47,11 @@ function Ring({
             transform="rotate(-90 18 18)"
           />
         </svg>
-        <span>{name === 'Codex' ? 'Cx' : 'Cl'}</span>
+        <img
+          src={`/providers/${name.toLowerCase()}.png`}
+          alt=""
+          className={`provider-logo provider-logo-${name.toLowerCase()}`}
+        />
       </span>
       <strong>{remaining === null ? '—' : `${remaining}%`}</strong>
     </span>
@@ -102,17 +106,19 @@ export default function PeakDemo({
   const [stageHovered, setStageHovered] = useState(false);
   const [view, setView] = useState<'limits' | 'tasks'>('limits');
   const [theme, setTheme] = useState<Theme>('dark');
-  const [custom, setCustom] = useState('#c7c7c7');
+  const [custom, setCustom] = useState('#67555f');
   const [presence, setPresence] = useState<Presence>('always');
   const [fullscreen, setFullscreen] = useState(false);
-  const [fade, setFade] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const [notchStyle, setNotchStyle] = useState<'floating' | 'fixed'>('fixed');
   const id = useId();
   const selected = scenarios[state];
   const colors = palette(theme, custom);
   const color = readableColor(colors.text, colors.background);
   const attention = isAttention(state);
   const active = state !== 'idle' && state !== 'stale';
-  const expanded = pinned || (islandHovered && !fade);
+  const expanded = !dismissed && (pinned || islandHovered);
+  const showActivity = active && (expanded || notchStyle === 'floating');
   const visible = presenceVisible(
     presence,
     state,
@@ -127,7 +133,7 @@ export default function PeakDemo({
     '--island-card': colors.card,
     '--island-border': colors.border,
     '--island-muted': colors.muted,
-    '--state-color': color,
+    '--state-color': attention ? '#f5b43c' : color,
   } as CSSProperties;
 
   useEffect(() => {
@@ -135,6 +141,12 @@ export default function PeakDemo({
     const timeout = window.setTimeout(() => setState('idle'), 5000);
     return () => window.clearTimeout(timeout);
   }, [state]);
+
+  useEffect(() => {
+    if (!dismissed || islandHovered) return;
+    const timeout = window.setTimeout(() => setDismissed(false), 2500);
+    return () => window.clearTimeout(timeout);
+  }, [dismissed, islandHovered]);
 
   function choose(next: Scenario) {
     setState(next);
@@ -144,10 +156,11 @@ export default function PeakDemo({
     setPinned(false);
     setView('limits');
     setTheme('dark');
-    setCustom('#c7c7c7');
+    setCustom('#67555f');
     setPresence('always');
     setFullscreen(false);
-    setFade(false);
+    setDismissed(false);
+    setNotchStyle('fixed');
   }
 
   return (
@@ -226,13 +239,13 @@ export default function PeakDemo({
           </div>
         </div>
         <div
-          className={`island-position ${expanded ? 'island-position-expanded' : ''} ${visible ? '' : 'island-hidden'}`}
+          className={`island-position notch-${notchStyle} ${expanded ? 'island-position-expanded' : ''} ${visible ? '' : 'island-hidden'} ${dismissed ? 'island-dismissed' : ''}`}
           style={css}
           onMouseEnter={() => setIslandHovered(true)}
           onMouseLeave={() => setIslandHovered(false)}
         >
           <div
-            className={`demo-island ${active ? 'island-active' : ''} ${expanded ? 'island-expanded' : ''} ${fade && islandHovered && !pinned && !attention ? 'island-faded' : ''}`}
+            className={`demo-island ${showActivity ? 'island-active' : ''} ${expanded ? 'island-expanded' : ''}`}
             onKeyDown={(event) => {
               if (event.key === 'Escape') {
                 setPinned(false);
@@ -243,23 +256,23 @@ export default function PeakDemo({
             <button
               type="button"
               className="island-header"
-              aria-label={`${expanded ? 'Collapse' : 'Expand'} Peak ${hero ? 'hero' : 'playground'} preview`}
+              aria-label={`Peak ${hero ? 'hero' : 'playground'} preview. Hover for details; click to fade.`}
               aria-expanded={expanded}
               aria-controls={`${id}-details`}
               onClick={() => {
-                setPinned(!pinned);
-                if (pinned) setIslandHovered(false);
+                setDismissed(true);
+                setPinned(false);
               }}
             >
-              <Ring name="Codex" remaining={remainingPercent(90, fresh)} />
+              <Ring name="Codex" remaining={remainingPercent(29, fresh)} />
               <span className="island-title">
                 <span className="island-state-dot" />
                 {active ? selected.title : 'Peak'}
                 {active && <small>+1</small>}
               </span>
-              <Ring name="Claude" remaining={remainingPercent(32, fresh)} />
+              <Ring name="Claude" remaining={remainingPercent(38, fresh)} />
             </button>
-            {active && (
+            {showActivity && (
               <div className="island-activity">
                 <span>{selected.detail}</span>
                 <small>
@@ -313,18 +326,18 @@ export default function PeakDemo({
                 <div className="island-limits">
                   <div className="island-provider">
                     <h3>
-                      Codex <span>Sample plan</span>
+                      Codex limits <span>Plus · sample</span>
                     </h3>
                     <div className="island-provider-card">
                       <Limit
                         name="5-hour limit"
-                        used={90}
+                        used={29}
                         reset="Resets in 1h 59m"
                         fresh={fresh}
                       />
                       <Limit
                         name="Weekly limit"
-                        used={45}
+                        used={5}
                         reset="Resets in 3d 23h"
                         fresh={fresh}
                       />
@@ -332,18 +345,18 @@ export default function PeakDemo({
                   </div>
                   <div className="island-provider">
                     <h3>
-                      Claude <span>Sample plan</span>
+                      Claude limits <span>Pro · sample</span>
                     </h3>
                     <div className="island-provider-card">
                       <Limit
                         name="5-hour limit"
-                        used={32}
+                        used={38}
                         reset="Resets in 1h 59m"
                         fresh={fresh}
                       />
                       <Limit
                         name="Weekly limit"
-                        used={68}
+                        used={61}
                         reset="Resets in 3d 23h"
                         fresh={fresh}
                       />
@@ -498,7 +511,6 @@ export default function PeakDemo({
               >
                 <option value="always">Always visible</option>
                 <option value="active">When active</option>
-                <option value="hover">On hover</option>
               </select>
             </label>
             <label className="toggle-control">
@@ -509,19 +521,29 @@ export default function PeakDemo({
               />
               <span>Fullscreen · alerts only</span>
             </label>
-            <label className="toggle-control">
-              <input
-                type="checkbox"
-                checked={fade}
-                onChange={(event) => setFade(event.target.checked)}
-              />
-              <span>Fade under the pointer</span>
+            <label className="select-control">
+              Notch style{' '}
+              <select
+                aria-label="Notch style"
+                value={notchStyle}
+                onChange={(event) =>
+                  setNotchStyle(event.target.value as 'floating' | 'fixed')
+                }
+              >
+                <option value="fixed">Fixed notch</option>
+                <option value="floating">Dynamic island</option>
+              </select>
             </label>
+            <p className="demo-interaction-note">
+              Hover to open. Click the header to step aside. Move away for 2.5
+              seconds to bring it back.
+            </p>
           </fieldset>
           <button
             type="button"
             className="button reveal-button"
             onClick={() => {
+              setDismissed(false);
               setPinned(true);
               setView('limits');
             }}

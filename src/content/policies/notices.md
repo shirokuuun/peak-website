@@ -4,7 +4,7 @@ Policy version 1.1 · October 6, 2026
 
 ## Independent product
 
-Peak is an independent Windows utility. OpenAI, Codex, Claude, Anthropic, Microsoft, and Windows names identify their respective products and services. Peak does not claim affiliation or endorsement. Provider identification in this website uses plain text and abbreviations.
+Peak is an independent Windows utility. OpenAI, Codex, Claude, Anthropic, Microsoft, and Windows names and provider marks identify their respective products and services. Peak does not claim affiliation or endorsement. Provider images identify the compatible tools shown in Peak’s interface.
 
 ## Desktop application components
 
@@ -23,7 +23,7 @@ Codex and Claude Code are discovered on your computer and are not bundled with P
 
 ## Website components and fonts
 
-The website uses Astro, React, and Tailwind CSS. Their respective licenses apply to their components. Oxanium, Space Grotesk, and JetBrains Mono are self-hosted under the SIL Open Font License. Font license texts are available in the website’s [Oxanium notice](/licenses/oxanium.txt), [Space Grotesk notice](/licenses/space-grotesk.txt), and [JetBrains Mono notice](/licenses/jetbrains-mono.txt).
+The website uses Astro, React, and Tailwind CSS. Their respective licenses apply to their components. This design uses the same self-hosted Inter Medium, SemiBold, and Bold fonts as Peak, plus JetBrains Mono for small labels. Inter is copyright 2016 The Inter Project Authors and licensed under the SIL Open Font License 1.1; see the full [Inter notice](/licenses/inter.txt). Retained assets also include font notices for [Oxanium](/licenses/oxanium.txt), [Space Grotesk](/licenses/space-grotesk.txt), and [JetBrains Mono](/licenses/jetbrains-mono.txt).
 
 - [Astro](https://github.com/withastro/astro)
 - [React](https://github.com/facebook/react)

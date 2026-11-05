@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import StoreButton from './StoreButton.astro';
 import release from '../data/release.json';
 import { isReleaseReady } from '../lib/release.mjs';
 const downloadUrl = isReleaseReady(release) ? release.storeUrl : '/download/';
@@ -10,7 +11,7 @@ const active = Astro.url.pathname;
   <div class="header-inner">
     <a class="brand" href="/" aria-label="Peak home">
       <img src="/peak-icon.png" width="34" height="34" alt="" />
-      <span>PEAK</span>
+      <span>peak.</span>
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
       <a href="/#story">Overview</a>
@@ -23,9 +24,7 @@ const active = Astro.url.pathname;
         Support
       </a>
     </nav>
-    <a class="button button-small header-download" href={downloadUrl}>
-      Get Peak <Icon name="download" size={15} />
-    </a>
+    <StoreButton compact />
     <button
       class="menu-button"
       aria-label="Open navigation"

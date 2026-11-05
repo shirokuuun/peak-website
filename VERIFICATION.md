@@ -1,5 +1,15 @@
 # Website verification
 
+## Website redesign — November 5, 2026
+
+- Owner approved publishing the local redesign through the website repository’s main branch and its existing Vercel integration. No application package or version changes are included. Website package version remains 1.0.0; historical release metadata remains 1.0.1.
+- The approved composition uses Inter, supplied provider images, offset headings and workspace placement, a numbered feature rail, native dark/light/mauve captures, and a separate browser simulation. The source app checkout and its existing development changes remain untouched.
+- Current development UI and simulated interactions are labelled as design previews; Store-build interactions can differ. Microsoft Store remains the download destination. The original film is labelled as showing the earlier interface.
+- 29 Astro files pass type checking with zero errors, warnings, or hints. All 11 focused tests pass. The production build gate passes and generates seven static pages. The generated-page audit verifies local references, unique IDs, a single main heading per page, canonical Peak Store destinations, absence of legacy downloads, and unchanged version fields.
+- Local browser checks cover Inter and provider image loading, the custom feature rail and arrow-key navigation, appearance selection, mobile menu, reveal and stale-data behavior, and the offset hero layout without horizontal overflow. The production share image is 1200 × 630 and was inspected visually.
+
+Earlier entries record their respective historical releases and checks.
+
 ## Microsoft Store website update — October 8, 2026
 
 - Verified the public Peak Microsoft Store listing (`9P7C7HMFN9Z3`), title, neorangel publisher, and download action in the browser. Website download calls to action now open its canonical HTTPS listing. No versioned EXE/ZIP download links or unsigned-app messaging remain in generated website pages.
