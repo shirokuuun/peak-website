@@ -5,3 +5,7 @@ dist/
 .qa/
 package-lock.json
 public/
+video/public/
+video/node_modules/
+video/out/
+video/package-lock.json

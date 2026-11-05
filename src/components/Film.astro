@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 const chapters = [
-  { at: 0, time: '00:00', label: 'Stay in flow' },
+  { at: 0, time: '00:00', label: 'Stay in the work' },
   { at: 4, time: '00:04', label: 'Your limits' },
   { at: 10, time: '00:10', label: 'Your work' },
   { at: 16, time: '00:16', label: 'Your turn' },
@@ -38,19 +38,19 @@ const chapters = [
       controls
       playsinline
       preload="none"
-      poster="/media/promo-poster.jpg"
-      aria-label="Peak promo film, 36 seconds, native app UI with sample data"
+      poster="/media/peak-design-poster.jpg"
+      aria-label="Peak — Stay in the work. A 36-second film showing the updated native design with sample data."
     >
-      <source src="/media/peak-promo.mp4" type="video/mp4" />
+      <source src="/media/peak-design-film.mp4" type="video/mp4" />
       <track
         default
         kind="captions"
-        src="/media/peak-promo.vtt"
+        src="/media/peak-design-film.vtt"
         srclang="en"
         label="English descriptions"
       />
       Your browser does not support video.{' '}
-      <a href="/media/peak-promo.mp4">Open the Peak film.</a>
+      <a href="/media/peak-design-film.mp4">Open the Peak film.</a>
     </video>
   </div>
   <div class="film-chapters" aria-label="Film chapters">
@@ -63,27 +63,40 @@ const chapters = [
     ))}
   </div>
   <div class="film-caption">
-    <p>Original product film · earlier interface · sample data · music</p>
+    <p>Updated native design preview · sample data · original music</p>
     <details>
       <summary>Read the film transcript</summary>
       <p>
-        00:00 — Stay in flow. The compact Peak island keeps a quiet place at the
-        top of your desktop.
+        00:00 — Stay in the work. Your AI limits in view. Your attention where
+        it belongs. The mauve Peak island shows the current native design.
       </p>
       <p>
-        00:04 — Know what’s left. Codex and Claude usage, reset times, and one
-        quick glance.
+        00:04 — Less guessing. More making. See remaining Codex and Claude usage
+        in the 5-hour and weekly windows, plus reported reset times.
       </p>
       <p>
-        00:10 — Know what’s moving. Codex task activity and project context.
+        00:10 — Keep the work in sight. The task, the project, and locally
+        observed Codex activity. Activity is not completion percentage.
       </p>
       <p>
-        00:16 — Your turn. Amber signals a reported review request. Respond in
-        Codex.
+        00:16 — Your turn. A question or approval request signals when you’re
+        needed. Peak observes. Review and respond in Codex.
       </p>
-      <p>00:21 — Make it yours. Dark, light, and custom island colors.</p>
-      <p>00:27 — There when you need it. Hover, pin, and pointer fading.</p>
-      <p>00:32 — Peak. A little island. A clearer picture.</p>
+      <p>
+        00:21 — Feels like your space. Dark, light, and a custom mauve color.
+      </p>
+      <p>
+        00:27 — There when you need it. Choose visibility and behavior. An
+        editorial animation demonstrates hovering and fading over a workspace.
+      </p>
+      <p>
+        00:32 — Keep your head in it. Meet Peak. Free on the Microsoft Store.
+        Visit peakforwindows.vercel.app.
+      </p>
+      <p>
+        Native captures use fictional sample data. Editorial interactions and
+        the latest design may differ from your installed Store build.
+      </p>
     </details>
   </div>
 </section>

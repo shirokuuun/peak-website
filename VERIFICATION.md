@@ -1,5 +1,14 @@
 # Website verification
 
+## Updated Remotion product film — November 5, 2026
+
+- Replaced the earlier-interface film with `peak-design-film.mp4`: 1920 × 1080, 30 fps, 1,080 frames, H.264 video and 48 kHz stereo AAC. The 36.011-second container includes AAC padding; the scene timeline is exactly 36 seconds. File size: 4,117,807 bytes. SHA-256: `66f14d826bd70a0b7faf8e6999f5d1b6740a65deeb280896c0eb91596693fd1b`.
+- Editable Remotion source and its separate lockfile are in `video/`. Native captures, Inter, and provider marks come from existing website assets. The original standalone promo project and application checkout are untouched. No package, release, or policy version is incremented.
+- Thirteen representative frames were rendered and reviewed, covering every scene, each appearance, the hover/fading sequence, and the closing card. Review corrected activity-heading spacing and compact-preview corner geometry. Rendering reported zero browser errors. The final encoded video decodes fully; decoded audio has a peak of 0.6204 and RMS of 0.0966, without clipping.
+- A matching 1920 × 1080 poster, 12 timed descriptive caption cues, the transcript, and six chapter controls replace the previous media. Caption cues cover 0–36 seconds without gaps or overlaps. Native sample data and editorial animations remain disclosed. Old film/poster/caption assets are removed from the website.
+- Remotion TypeScript checks pass. Astro checks 29 files with zero errors, warnings, or hints; all 11 website tests pass; the public production build produces seven pages. The generated-page audit resolves all 212 local references, verifies Store destinations, and confirms unchanged versions. The local page returns HTTP 200 and references only the new film.
+- Interactive playback/seek verification was unavailable: Windows Computer Use stopped because it could not determine the browser URL confidently. No further UI inputs were issued. Verification uses native frame review, complete media decoding, source/build checks, and production HTTP checks; it does not claim a completed browser playback test.
+
 ## Website redesign — November 5, 2026
 
 - Owner approved publishing the local redesign through the website repository’s main branch and its existing Vercel integration. No application package or version changes are included. Website package version remains 1.0.0; historical release metadata remains 1.0.1.

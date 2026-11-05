@@ -34,6 +34,6 @@ The website uses Astro, React, and Tailwind CSS. Their respective licenses apply
 
 ## Peak film and screenshots
 
-The supplied Peak promo is a 36-second film with original electronic music. Its app screenshots were rendered from native WPF controls using isolated sample fixtures. Entrances, zooms, and the pointer-fading sequence are editorial animations. No live accounts, private chats, or credentials appear in those fixtures.
+The updated Peak promo is a 36-second Remotion film with original synthesized music. Its current-design app screenshots were rendered from native WPF controls using isolated sample fixtures. Entrances, close-ups, theme wipes, and the hover/fading demonstration are editorial animations. Design previews can differ from the installed Store build. No live accounts, private chats, or credentials appear in those fixtures.
 
 The browser playground is a labeled web simulation built for this website. It does not run the Windows application or connect to providers.

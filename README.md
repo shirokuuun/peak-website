@@ -1,6 +1,6 @@
 # Peak website
 
-An original black-and-white product showcase for Peak, with a centered hero, squared Oxanium headings, Space Grotesk body text, a guided walkthrough, the supplied 36-second promo, native app screenshots with sample data, and an interactive browser playground. Built with Astro 7, TypeScript, Tailwind 4, and React 19. All pages are statically generated; there is no backend or analytics.
+An original product showcase for Peak, with offset Inter headings, neutral surfaces, a numbered native-app tour, a new 36-second Remotion film, and an interactive browser playground. Built with Astro 7, TypeScript, Tailwind 4, and React 19. All pages are statically generated; there is no backend or analytics.
 
 This is the standalone website repository, `shirokuuun/peak-website`. The website lives directly in `D:\Languages\codex\peak_website`, with an independent Git history. It contains no desktop application source or inherited application commits.
 
@@ -41,7 +41,7 @@ For a custom domain, add it in Vercel Domains, apply its DNS records, and update
 
 ## Media
 
-`public/media/peak-promo.mp4` is copied unchanged from the supplied Peak-Promo.mp4 (36.011 seconds, H.264/AAC, 1920×1080). A still supplies the film poster; the caption identifies its earlier interface. The new 1200 × 630 `public/media/peak-social.png` supplies the social preview, with the current Inter type, Peak icon, and native mauve design screenshot. Playback requires a visitor action; there is no autoplay or media download on initial load. Descriptive captions and a text transcript are included.
+`public/media/peak-design-film.mp4` is the rebuilt 36-second product film (H.264/AAC, 1920 × 1080, 30 fps), with Inter typography, native provider marks, current dark/light/mauve sample captures, editorial interaction animation, and a new original score. `peak-design-poster.jpg`, descriptive captions, the transcript, and chapter buttons match the new edit. Editable, reproducible Remotion source is in `video/`, with a separate package and lockfile; see `video/README.md`. The website build serves the reviewed export without installing or rendering Remotion. The old supplied film remains in its separate original project and is no longer shipped by the website. Playback requires a visitor action; there is no autoplay or media download on initial load. The 1200 × 630 `public/media/peak-social.png` supplies the social preview.
 
 `public/screens/` contains native WPF controls rendered with isolated sample fixtures from the existing Peak 1.0.7 development assembly. The feature rail displays dark, light, and mauve usage views, Codex activity and attention, and presence settings. These are design previews, not a claim that a new Store package has shipped. `public/screens/showcase/` preserves the earlier 1920 × 1080 marketing assets. Sample readings remain labelled; the renderer never starts real providers or changes user configuration. The browser island is a separate simulation with both notch styles, theme controls, sample activity, unknown/stale values, and header dismissal. The Store version can have different interactions. In the playground, a finished task returns to idle after five seconds; stale data shows a dash.
 
